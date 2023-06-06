@@ -4,9 +4,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --navy-shadow: rgba(2, 12, 27, 0.7);
+  --background-color: #0a192f;
+  --lightest-navy: #233554;
+  --light-navy: #112240;
+  --dark-slate: #495670;
+  --slate: #8892b0;
+  --light-slate: #ccd6f6;
+  --lightest-slate: #a8b2d1;
+  --theme-color: #9d00ff;
 }
 
 @media (prefers-color-scheme: dark) {
