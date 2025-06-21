@@ -25,12 +25,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-[#030014] overflow-y-scroll overflow-x-hidden`}>
-        {/* <StarsCanvas/> */}
+      <body className={`${inter.className} bg-[#030014] text-white overflow-y-scroll overflow-x-hidden`}>
         <Navbar/>
-        {children}
-        <Footer/>
+        <main className="mx-20">
+               {children}
+        </main>
+   
+         <Footer/>
         </body>
+       
     </html>
   );
 }
