@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
 import { Poppins, DM_Sans } from "next/font/google";
+import { Space_Grotesk } from 'next/font/google';
 import "./globals.css";
 import Navbar from "~/components/layout/Navbar";
 import StarsCanvas from "~/components/layout/StarsCanvas"
 import Footer from "~/components/layout/Footer";
 
-const inter = DM_Sans({ subsets: ["latin"] });
+const inter = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  weight: ['400', '700'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: "Dhanush Naik",
@@ -20,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-[#030014] overflow-y-scroll overflow-x-hidden`}>
-        <StarsCanvas/>
+        {/* <StarsCanvas/> */}
         <Navbar/>
         {children}
         <Footer/>
