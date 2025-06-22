@@ -3,13 +3,27 @@ import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
-
+import { slideInFromLeft, slideInFromRight } from "../../utils/motion";
 const Approach = () => {
   return (
     <section className="w-full py-20">
-      <h1 className="heading">
-        My <span className="text-purple">approach</span>
-      </h1>
+    <div className='w-full h-auto flex flex-col items-center justify-center'>
+
+        <motion.div
+          variants={slideInFromLeft(0.5)}
+          className="text-[80px] text-white font-extrabold mt-10 text-center mb-2"
+        >
+          My Approach 
+        </motion.div>
+      <motion.div
+        variants={slideInFromRight(0.5)}
+        className="cursive text-[20px] text-purple-200 mb-10 text-center"
+      >
+  
+          ✨  ✨
+  
+      </motion.div>
+    </div>
       {/* remove bg-white dark:bg-black */}
       <div className="my-20 flex flex-col lg:flex-row items-center justify-center w-full gap-4">
         {/* add des prop */}
