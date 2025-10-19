@@ -1,6 +1,24 @@
 import { GraphicsVideoWork } from '@/types/graphicsVideo'
 
+// YouTube Video Work examples
+const youtubeVideos: GraphicsVideoWork[] = [
+  {
+    id: 'yt-1',
+    title: 'hackathons?',
+    description: 'A very normal vintage edit of mumbai and hackathons.',
+    image: 'https://img.youtube.com/vi/jI6S4UjSmWI/maxresdefault.jpg',
+    category: 'video',
+    tags: ['Hackathon', 'Cinematic'],
+    tools: ['Premiere Pro', 'DaVinci Resolve'],
+    link: 'https://www.youtube.com/watch?v=jI6S4UjSmWI',
+    featured: true,
+    createdAt: '2024-07-15',
+  }
+];
+
 export const graphicsVideosWorks: GraphicsVideoWork[] = [
+  // --- Videos ---
+  ...youtubeVideos,
   // --- Graphics / Poster Works ---
   {
     id: 'graphic-1',
@@ -47,7 +65,7 @@ export const graphicsVideosWorks: GraphicsVideoWork[] = [
     id: 'graphic-5',
     title: 'DAMN. Poster Reinterpretation',
     description: "My own creative take on Kendrick Lamar's iconic 'DAMN.' album artwork.",
-    image: '/graphics/damn_poster.png',
+    image: '/graphics/damn_poster.jpg',
     category: 'graphics',
     tags: ['Album Art', 'Typography', 'Kendrick Lamar'],
     tools: ['Photoshop'],
@@ -58,7 +76,7 @@ export const graphicsVideosWorks: GraphicsVideoWork[] = [
     id: 'graphic-6',
     title: 'Digital Heist Poster',
     description: 'Official event poster for “Digital Heist,” a competitive tech-based event.',
-    image: '/graphics/digital_heist.png',
+    image: '/graphics/digital-heist.png',
     category: 'graphics',
     tags: ['Event', 'Tech', 'Poster Design'],
     tools: ['Photoshop'],
@@ -109,7 +127,7 @@ export const graphicsVideosWorks: GraphicsVideoWork[] = [
     id: 'graphic-11',
     title: 'MIT Alumni Meet Poster',
     description: 'Official poster for NMAMIT Alumni Meet – featuring minimalist and modern visual design.',
-    image: '/graphics/mit_post.png',
+    image: '/graphics/mit-post.png',
     category: 'graphics',
     tags: ['College', 'Event', 'Poster'],
     tools: ['Photoshop'],
@@ -119,7 +137,7 @@ export const graphicsVideosWorks: GraphicsVideoWork[] = [
     id: 'graphic-12',
     title: 'Mumbai Gang Logo',
     description: 'Personalized logo designed for my friend group “Mumbai Gang.”',
-    image: '/graphics/mumbai_gang_logo.jpg',
+    image: '/graphics/mumbai-gang-logo.jpg',
     category: 'graphics',
     tags: ['Logo', 'Personal', 'Design'],
     tools: ['Photoshop'],
@@ -160,7 +178,7 @@ export const graphicsVideosWorks: GraphicsVideoWork[] = [
     id: 'graphic-16',
     title: 'Pop Tamasha Quiz Poster',
     description: 'Poster for Pop Tamasha quiz event organized by VISTA club.',
-    image: '/graphics/pop_tamasha.jpg',
+    image: '/graphics/pop-tamasha.jpg',
     category: 'graphics',
     tags: ['Pop Culture', 'Vista', 'Poster'],
     tools: ['Photoshop'],
@@ -170,7 +188,7 @@ export const graphicsVideosWorks: GraphicsVideoWork[] = [
     id: 'graphic-17',
     title: 'Roadies Event Poster',
     description: 'Poster for Roadies-style challenge event organized by VISTA.',
-    image: '/graphics/roadies.jpg',
+    image: '/graphics/Roadies PosterMM.jpg',
     category: 'graphics',
     tags: ['Event', 'Vista', 'Poster'],
     tools: ['Photoshop'],
@@ -201,7 +219,7 @@ export const graphicsVideosWorks: GraphicsVideoWork[] = [
     id: 'graphic-20',
     title: 'Vote Parth Campaign Poster',
     description: 'Campaign poster designed for Parth’s run for Finance Head, emphasizing bold design and clarity.',
-    image: '/graphics/vote_parth.png',
+    image: '/graphics/vote-parth.png',
     category: 'graphics',
     tags: ['Campaign', 'Poster', 'Design'],
     tools: ['Photoshop'],
