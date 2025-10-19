@@ -147,13 +147,23 @@ export function VideoCard({ work, isFeatured = false }: VideoCardProps) {
               </DialogTrigger>
               <DialogContent className="max-w-3xl w-full p-0 border-0">
                 <div className="aspect-video w-full">
-                  <Image
-                    className="h-full w-full object-cover rounded-lg"
-                    src={work.image}
-                    alt={work.title}
-                    width={1280}
-                    height={720}
-                  />
+                  {work.link?.includes('youtube.com') ? (
+                    <iframe
+                      className="w-full h-full rounded-lg"
+                      src={work.link.replace('watch?v=', 'embed/')}
+                      title={work.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  ) : (
+                    <Image
+                      className="h-full w-full object-cover rounded-lg"
+                      src={work.image}
+                      alt={work.title}
+                      width={1280}
+                      height={720}
+                    />
+                  )}
                 </div>
                 <DialogTitle className="sr-only">{work.title}</DialogTitle>
               </DialogContent>
