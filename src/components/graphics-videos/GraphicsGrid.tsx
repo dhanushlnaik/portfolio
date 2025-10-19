@@ -18,16 +18,10 @@ export function GraphicsGrid({ works, className }: GraphicsGridProps) {
 
   return (
     <div
-      className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 auto-rows-[250px] sm:auto-rows-[280px] ${className}`}
+      className={`columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 ${className}`}
     >
-      {works.map((work: GraphicsVideoWork, index: number) => (
-        <div
-          key={work.id}
-          className={`
-            ${index % 5 === 0 ? 'col-span-2 row-span-2 sm:auto-rows-auto' : ''}
-            ${index % 7 === 3 ? 'col-span-1 row-span-2 sm:auto-rows-auto' : ''}
-          `}
-        >
+      {works.map((work: GraphicsVideoWork) => (
+        <div key={work.id} className="break-inside-avoid mb-4">
           <GraphicsCard work={work} />
         </div>
       ))}
