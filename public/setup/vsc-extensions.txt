@@ -1,4 +1,3 @@
-aslamanver.vsc-export
 austenc.tailwind-docs
 be5invis.vscode-custom-css
 bracketpaircolordlw.bracket-pair-color-dlw
