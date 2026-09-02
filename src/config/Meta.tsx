@@ -12,13 +12,13 @@ export interface PageMeta {
 // Base site configuration
 export const siteConfig = {
   name: heroConfig.name,
-  title: 'Sleek Portfolio',
-  description: 'Portfolio of Dhanush Naik',
+  title: 'Dhanush Naik — Fullstack & Web3 Developer',
+  description: 'Fullstack & Web3 developer, designer and video editor. Founder of Tatsuik Tech Services, Bhatkal, Karnataka.',
   url: process.env.NEXT_PUBLIC_URL || 'http://localhost:3000',
   ogImage: '/meta/opengraph-image.png',
   author: {
     name: about.name,
-    twitter: '@dhanushlnaik',
+    twitter: '@iamdhanushlnaik',
     github: 'dhanushlnaik',
     linkedin: 'dhanushlnaik',
     email: 'dhanushlnaik@gmail.com',

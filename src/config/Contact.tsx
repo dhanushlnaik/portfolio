@@ -1,7 +1,7 @@
 export const contactConfig = {
   title: 'Contact',
   description:
-    'Get in touch with me. I will get back to you as soon as possible.',
+    'Open to freelance contracts, Web3 projects, and design or video work. Fully remote from Bhatkal, Karnataka (IST) with flexible overlap for EU and US. Response within 24 hours.',
   form: {
     labels: {
       name: 'Name',
@@ -11,7 +11,7 @@ export const contactConfig = {
     },
     placeholders: {
       name: 'Your name',
-      email: 'your.email@example.com',
+      email: 'you@company.com',
       phone: '+1 (555) 123-4567',
       message: 'Tell me about your project...',
     },

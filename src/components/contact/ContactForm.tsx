@@ -146,7 +146,7 @@ export default function ContactForm() {
                   <FormLabel>Email *</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="your.email@example.com"
+                      placeholder="you@company.com"
                       type="email"
                       {...field}
                     />

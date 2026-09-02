@@ -29,7 +29,7 @@ export const skillComponents = {
 export const heroConfig = {
   // Personal Information
   name: 'Dhanush Naik',
-  title: 'Full Stack Web Developer',
+  title: 'Fullstack & Web3 Developer · Designer',
   avatar: '/assets/logo.png',
 
   // Skills Configuration
@@ -64,7 +64,7 @@ export const heroConfig = {
   // Description Configuration
   description: {
     template:
-      'I build interactive web apps using TypeScript, React, Next.js, Bun, and PostgreSQL with a focus on <b>UI</b> design. Enthusiastic about <b>Three.js</b> and design-driven development.',
+      'I build fullstack web apps and Ethereum tooling with TypeScript, React, Next.js and PostgreSQL — then design the <b>brand, motion and video</b> around them. Founder of <b>Tatsuik Tech Services</b>, shipping from Bhatkal, Karnataka.',
   },
 
   // Buttons Configuration

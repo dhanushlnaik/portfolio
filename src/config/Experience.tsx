@@ -40,6 +40,30 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     isCurrent: true,
+    company: 'Tatsuik Tech Services',
+    position: 'Founder',
+    location: 'Bhatkal, Karnataka (Remote)',
+    image: '/company/tatsuik.png',
+    description: [
+      'Founded **Tatsuik Tech Services**, a lean studio pairing fullstack and Web3 engineering with brand design, motion and video — the whole pipeline handled in-house rather than split across a developer and an agency.',
+      'Registered MSME (Udyam UDYAM-KR-27-0058065), operating remote-first on IST with flexible overlap for EU and US clients.',
+      'Delivering fullstack web apps and Ethereum tooling alongside brand systems, event identity and edited video, on retainer or fixed-scope project terms.',
+      'Runs a weekly shipping cadence — clients get a working demo each week rather than a single reveal at the end.',
+    ],
+    startDate: 'Jul 2026',
+    endDate: 'Present',
+    technologies: [
+      { name: 'Next.js', href: 'https://nextjs.org/', icon: <NextJs /> },
+      { name: 'TypeScript', href: 'https://typescriptlang.org/', icon: <TypeScript /> },
+      { name: 'PostgreSQL', href: 'https://www.postgresql.org/', icon: <PostgreSQL /> },
+      { name: 'Prisma', href: 'https://www.prisma.io/', icon: <Prisma /> },
+      { name: 'Node.js', href: 'https://nodejs.org/', icon: <NodeJs /> },
+      { name: 'Tailwind CSS', href: 'https://tailwindcss.com/', icon: <TailwindCss /> },
+      { name: 'Figma', href: 'https://figma.com/', icon: <Figma /> },
+    ],
+  },
+  {
+    isCurrent: true,
     company: 'Avarch LLC',
     position: 'Full-stack Developer',
     location: 'Remote',

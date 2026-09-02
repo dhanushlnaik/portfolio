@@ -22,5 +22,5 @@ export const mySkills = [
 
 export const about = {
   name: 'Dhanush Naik',
-  description: `I'm a Full Stack Web Developer specializing in building MVPs and real-world products. I focus on clean UI, scalable architectures, and shipping production-ready solutions.`,
+  description: `I'm a fullstack developer working across Web3 and product engineering — and, unusually, the designer too. B.Tech Computer Science at NMAMIT (2022-2026), building in the Ethereum ecosystem since 2022. I run Tatsuik Tech Services out of Bhatkal, Karnataka, where the same hands that write the contract cut the teaser video. Most teams make you choose between an engineer and a designer; the handoff between those two is where projects lose their edge.`,
 };
