@@ -1,13 +1,13 @@
 import { Project } from '@/types/project';
 
 // Newest first. `projectDetailsPageSlug` must match src/data/projects/<slug>.mdx
-// whenever `details` is true — the case-study route resolves the slug straight
+// whenever `details` is true. The case-study route resolves the slug straight
 // to that file, so a slug without a matching .mdx renders a 404.
 export const projects: Project[] = [
   {
     title: 'ETHQuest',
     description:
-      'A pixel-art game for the EIPsInsight booth at Devcon 8 — quick quests on Ethereum standards, 392 EIPs as collectible cards, and best-of-3 card duels.',
+      'A pixel-art game for the EIPsInsight booth at Devcon 8. Quests about Ethereum standards, all 392 EIPs as collectible cards, and card duels.',
     year: '2026',
     category: 'Web3 · Game',
     image: '/project/ethquest.jpg',
@@ -22,7 +22,7 @@ export const projects: Project[] = [
   {
     title: 'ClockThatDaily',
     description:
-      'A 4-minute daily gauntlet of internet and pop-culture lore — Emojidle, Bad Plot, Soundbite and Cluster — with streaks, Aura and a global leaderboard.',
+      'A daily 4-minute quiz on internet and pop culture with four games (Emojidle, Bad Plot, Soundbite, Cluster), streaks and a leaderboard.',
     year: '2026',
     category: 'Daily game',
     image: '/project/clockthatdaily.jpg',
@@ -36,7 +36,7 @@ export const projects: Project[] = [
   {
     title: 'SolTrac',
     description:
-      'Predicts whether a Solana transaction will fail before you send it, explains why in plain language, and suggests the fix. SDK, web app and CLI.',
+      'Tells you if a Solana transaction will fail before you send it, why, and how to fix it. Comes as an SDK, web app and CLI.',
     year: '2026',
     category: 'Solana · Dev tooling',
     image: '/project/soltrac.jpg',
@@ -51,7 +51,7 @@ export const projects: Project[] = [
   {
     title: 'Real Hex to Decimal',
     description:
-      'An instant hex ↔ decimal converter with step-by-step math, Wei/Gwei/Ether helpers for Web3 devs, and seven languages.',
+      'Hex to decimal converter that shows the math, converts Wei/Gwei/Ether, and is translated into seven languages.',
     year: '2026',
     category: 'Tool',
     image: '/project/realhextodecimal.jpg',
@@ -65,7 +65,7 @@ export const projects: Project[] = [
   {
     title: 'Tatsuik',
     description:
-      'Site for my studio — fullstack, Web3, brand and video from one desk. Designed, written and built end to end.',
+      'Website for my studio. I designed it, wrote it and built it.',
     year: '2026',
     category: 'Studio site',
     image: '/project/tatsuik.jpg',
@@ -79,7 +79,7 @@ export const projects: Project[] = [
   {
     title: 'Rohit Contracting L.L.C',
     description:
-      'Marketing site for a Dubai villa-construction firm — services, milestones and project gallery, with quote requests straight to WhatsApp.',
+      'Website for a villa construction company in Dubai: services, past projects, and quote requests over WhatsApp.',
     year: '2026',
     category: 'Client',
     image: '/project/rohit-contracting.jpg',
@@ -93,7 +93,7 @@ export const projects: Project[] = [
   {
     title: 'Khel.fun',
     description:
-      'Landing site for a Web3 gaming platform — a scroll-driven, GSAP-animated hero with a loud synthwave look.',
+      'Landing page for a Web3 gaming platform, with a GSAP scroll animation and a synthwave look.',
     year: '2025',
     category: 'Client · Web3',
     image: '/project/khelfun.jpg',
@@ -107,8 +107,8 @@ export const projects: Project[] = [
   {
     title: 'EIPsInsight',
     description:
-      'Ethereum standards observability — proposal lifecycles, upgrade timelines and editor activity for EIPs, ERCs and RIPs. Built at Avarch.',
-    year: '2023–26',
+      'Tracks EIPs, ERCs and RIPs: proposal status, upgrade timelines and editor activity. I work on it at Avarch.',
+    year: '2023-26',
     category: 'Ethereum · Analytics',
     image: '/project/eipsinsight.jpg',
     stack: ['Next.js', 'TypeScript', 'MongoDB', 'PostgreSQL', 'Prisma'],
@@ -121,7 +121,7 @@ export const projects: Project[] = [
     title: 'Not Amy',
     description:
       'A verified Discord gaming bot with community features, maintained for a 40,000+ member server.',
-    year: '2021–24',
+    year: '2021-24',
     category: 'Discord bot',
     stack: ['Node.js', 'Discord.js', 'MongoDB'],
     github: 'https://github.com/dhanushlnaik/Amy-Sensei',
@@ -132,7 +132,7 @@ export const projects: Project[] = [
   {
     title: 'StrayMate',
     description:
-      'Connects people with stray animals that need a home — listings, search and secure sign-in.',
+      'Helps stray animals get adopted. Post a stray you found or find one near you.',
     year: '2024',
     category: 'Social impact',
     stack: ['Next.js', 'tRPC', 'Prisma', 'PostgreSQL'],

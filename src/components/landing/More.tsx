@@ -7,8 +7,8 @@ import SectionHeading from '../common/SectionHeading';
 
 const links = [
   { name: 'Design & video', note: 'Posters, brand work and edits', href: '/graphics-videos' },
-  { name: 'Journey', note: 'How I got here, year by year', href: '/journey' },
-  { name: 'Certificates', note: 'Courses, events and wins', href: '/journey/certificates' },
+  { name: 'Journey', note: 'What I did each year', href: '/journey' },
+  { name: 'Certificates', note: 'Courses, events and hackathons', href: '/journey/certificates' },
   { name: 'Uses', note: 'Hardware and apps I use every day', href: '/gears' },
 ];
 

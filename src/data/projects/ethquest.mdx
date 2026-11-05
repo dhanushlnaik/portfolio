@@ -1,43 +1,41 @@
 ---
 title: 'ETHQuest'
-description: 'A pixel-art game universe for the EIPsInsight booth at Devcon 8 — quests on Ethereum standards, collectible EIP cards and card duels.'
+description: 'A pixel-art game for the EIPsInsight booth at Devcon 8: quests on Ethereum standards, collectible EIP cards and card duels.'
 image: '/project/ethquest.jpg'
 technologies:
   ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS v4', 'Prisma 7', 'PostgreSQL', 'Passkeys (WebAuthn)', 'Motion', 'dnd-kit', 'Zod', 'Vitest']
 github: 'https://github.com/dhanushlnaik/ethquest'
 live: 'https://www.tatsuik.xyz/play'
-timeline: 'Oct – Nov 2026'
+timeline: 'Oct-Nov 2026'
 role: 'Design & Fullstack'
 team: 'EIPsInsight'
 status: 'completed'
 featured: true
 challenges:
-  ['Booth-speed onboarding', 'Server-verified XP', 'Reading live EIP data without touching it', 'Pixel art at 392-card scale']
-learnings: ['Passkey-only accounts', 'Postgres schema isolation', 'Designing for 30-second attention spans']
+  ['Fast onboarding', 'Server-side XP', 'Reading EIPsInsight data without writing to it', 'Pixel art for 392 cards']
+learnings: ['Passkey-only accounts', 'Separate Postgres schemas', 'Very short sessions']
 isPublished: true
 ---
 
 ## Overview
 
-**ETHQuest** is a game I built for the EIPsInsight Impact Booth at **Devcon 8 in Mumbai (Nov 3–6, 2026)**. People scan a QR code at the booth, play short games across five worlds, earn XP that the server verifies, and redeem it for real swag with a single-use QR.
-
-The tagline we worked from: *Ethereum is serious. Learning about it doesn't have to be.*
+**ETHQuest** is a game I built for the EIPsInsight Impact Booth at **Devcon 8 in Mumbai (Nov 3-6, 2026)**. People scan a QR code at the booth, play short games across five worlds, earn XP that the server verifies, and redeem it for real swag with a single-use QR.
 
 ## What you can do
 
 - **Quick quests**: trivia, upgrade history, real All Core Devs decisions and EIP hunts.
 - **Collect EIP trading cards**: all 392 proposals as pixel cards. Open packs, complete sets, gift duplicates.
 - **Battle**: best-of-3 card duels on Lore, Buzz, Links and Stage. You challenge friends by QR.
-- **No sign-up wall**: you start with two free packs straight away and can save your profile with a passkey whenever you like.
+- **No sign-up**: you get two free packs right away. Save your profile with a passkey later if you want.
 
 ## How it's built
 
 - **Next.js 16** (App Router, Cache Components, Turbopack) with React 19, TypeScript and Tailwind v4.
 - **Prisma 7 + PostgreSQL** using `@prisma/adapter-pg`. No Supabase, Firebase or Redis.
 - ETHQuest writes only to **its own `ethquest` schema** inside the EIPsInsight database. It reads EIPs, snapshots, upgrades and protocol calls with raw SQL, and falls back to EIPsInsight's public RPC if the database can't be reached.
-- **Passkeys** (`@simplewebauthn`) handle accounts, so there are no passwords to type on a crowded expo floor.
-- XP is computed on the server, and swag codes are single-use, so a modified client can't farm rewards.
+- **Passkeys** (`@simplewebauthn`) for accounts. Nobody wants to type a password on an expo floor.
+- XP is calculated on the server and swag codes work once, so people can't cheat their way to free merch.
 
-## Why it mattered
+## Designing for a booth
 
-Devcon visitors give a booth maybe thirty seconds. Everything was designed for that: one tap to start, short rounds, and visible progress. The answers to every quest live on EIPsInsight, so the game also brings people back to the real product.
+People at Devcon give a booth about thirty seconds, so it's one tap to start and every round is short. All the quest answers are on EIPsInsight, which was the point: get people to open the actual site.

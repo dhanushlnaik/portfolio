@@ -1,6 +1,6 @@
 ---
 title: 'EIPs Insights'
-description: 'A platform for exploring and analyzing Ethereum Improvement Proposals (EIPs).'
+description: 'Tracks every Ethereum Improvement Proposal: status, editors and upgrade timelines.'
 image: '/project/eipsinsight.jpg'
 technologies:
   ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'tRPC', 'NextAuth.js', 'Nginx']
@@ -18,11 +18,11 @@ isPublished: true
 
 ## Overview
 
-**EIPs Insights** is a web platform that provides structured insights into Ethereum Improvement Proposals (EIPs). It helps developers, researchers, and blockchain enthusiasts easily navigate technical discussions and proposal statuses.
+**EIPsInsight** tracks Ethereum Improvement Proposals: what state each one is in, who's editing it, and what's going into the next upgrade. I've worked on it at Avarch since 2022, starting with the backend scheduler that pulls EIP data from GitHub.
 
 ## Key Features
 
-- **EIP Browser** — Filter and explore proposals by category or status.  
-- **Nginx Deployment** — Self-hosted production setup.  
-- **Two-Branch Workflow** — Dev branch on Vercel, production on server.  
-- **Secure Auth** — NextAuth with database session handling.
+- **EIP browser**: filter proposals by category or status.  
+- **Nginx**: self-hosted production.  
+- **Two branches**: dev on Vercel, production on our own server.  
+- **Auth**: NextAuth with database sessions.

@@ -43,7 +43,7 @@ export default function JourneyPage() {
             Journey
           </h1>
           <p className="mx-auto max-w-2xl text-base md:text-lg text-muted-foreground px-4">
-            A timeline of my learning, projects, and milestones.
+            What I&apos;ve done each year.
           </p>
         </div>
         <Separator />

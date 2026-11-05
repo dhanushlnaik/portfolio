@@ -15,8 +15,8 @@ export const ctaConfig = {
   calLink: 'dhanush-naik-j1zzfe',
 
   // Headline + supporting line
-  preText: 'Got something that needs building, and maybe a launch video too?',
+  preText: 'Want to work together?',
   subText:
-    'Open to freelance, Web3 and design work. I work remotely on IST with overlap for EU and US, and reply within a day.',
+    'I take freelance, Web3 and design work. I am on IST, can overlap with EU and US hours, and usually reply within a day.',
   email: 'dhanushlnaik@gmail.com',
 };

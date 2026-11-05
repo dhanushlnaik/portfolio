@@ -84,7 +84,7 @@ export function BlogPageClient({
             Blogs
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Thoughts, tutorials, and insights on engineering, and programming.
+            Notes on things I&apos;ve built and learned.
           </p>
         </div>
 

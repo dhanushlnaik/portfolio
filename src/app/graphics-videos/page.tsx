@@ -33,7 +33,7 @@ export default function GraphicsVideosPage() {
             Graphics & Videos
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Explore my creative portfolio featuring graphic design, photo editing, and video production work.
+            Posters, photo edits and videos I&apos;ve made.
           </p>
         </div>
 

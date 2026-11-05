@@ -51,7 +51,7 @@ export default function CertificatesPage() {
             Certificates & Achievements
           </h1>
           <p className="mx-auto max-w-2xl text-base md:text-lg text-muted-foreground px-4">
-            A curated list of my certificates and notable achievements.
+            Certificates from courses, events and hackathons.
           </p>
         </div>
         <Separator />
