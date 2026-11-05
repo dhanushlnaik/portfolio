@@ -1,6 +1,6 @@
 ---
 title: 'StrayMate'
-description: 'A platform to connect people with stray animals in need of adoption or help.'
+description: 'Helps stray animals get adopted: post a stray you found, or find one to adopt near you.'
 technologies:
   ['Next.js', 'TypeScript', 'tRPC', 'Prisma', 'PostgreSQL', 'Tailwind CSS', 'NextAuth.js']
 github: 'https://github.com/dhanushlnaik/straymate'
@@ -17,14 +17,14 @@ isPublished: true
 
 ## Overview
 
-**StrayMate** is a full-stack web app built to help stray animals find loving homes. It connects people looking to adopt or offer help to those who’ve found strays in need.  
+**StrayMate** is a web app for getting stray animals adopted. If you've found a stray, you post it. If you want to adopt or help out, you search the listings near you.
 
-The project focuses on usability, secure data handling, and strong community impact — combining design empathy with robust backend systems.
+I built it solo in about three weeks, mostly to learn tRPC and Prisma properly.
 
 ## Key Features
 
-- **Animal Listings** — Add, update, and manage stray listings with details and images.  
-- **Authentication** — Secure sign-in via **NextAuth.js**.  
-- **Search & Filter** — Quickly find listings by location or category.  
-- **Prisma ORM** — Manages PostgreSQL database with strong data validation.  
-- **Responsive UI** — Built with **Tailwind CSS** for modern aesthetics.
+- **Listings**: add, edit and remove strays with photos and details.  
+- **Sign-in**: NextAuth.js.  
+- **Search & Filter**: find listings by location or category.  
+- **Prisma + PostgreSQL**: typed database access, with Zod validation on every form.  
+- **UI**: Tailwind CSS, works on phones.

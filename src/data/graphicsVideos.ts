@@ -44,7 +44,7 @@ export const graphicsVideosWorks: GraphicsVideoWork[] = [
   {
     id: 'graphic-3',
     title: 'Animanga Quiz Poster (Draft)',
-    description: 'Early draft version of the Animanga quiz poster with alternate color schemes and typography tests.',
+    description: 'Early draft of the Animanga poster, trying other colours and type.',
     image: '/graphics/animange.png',
     category: 'graphics',
     tags: ['Draft', 'Poster Design', 'Grey Matter'],
@@ -75,7 +75,7 @@ export const graphicsVideosWorks: GraphicsVideoWork[] = [
   {
     id: 'graphic-6',
     title: 'Digital Heist Poster',
-    description: 'Official event poster for “Digital Heist,” a competitive tech-based event.',
+    description: 'Poster for “Digital Heist,” a tech competition.',
     image: '/graphics/digital-heist.png',
     category: 'graphics',
     tags: ['Event', 'Tech', 'Poster Design'],
@@ -84,7 +84,7 @@ export const graphicsVideosWorks: GraphicsVideoWork[] = [
   },
   {
     id: 'graphic-7',
-    title: 'End of Beginning – Farewell Poster',
+    title: 'End of Beginning, Farewell Poster',
     description: 'Official farewell poster for the 2025 batch of the ISE department, themed “End of Beginning.”',
     image: '/graphics/endofbeginning.jpg',
     category: 'graphics',
@@ -105,8 +105,8 @@ export const graphicsVideosWorks: GraphicsVideoWork[] = [
   },
   {
     id: 'graphic-9',
-    title: 'Grey Matter – Join Us Poster',
-    description: 'Recruitment poster for Grey Matter club to attract new members.',
+    title: 'Grey Matter Join Us Poster',
+    description: 'Recruitment poster for the Grey Matter club.',
     image: '/graphics/gm_joinus.jpg',
     category: 'graphics',
     tags: ['Recruitment', 'Club', 'Poster'],
@@ -126,7 +126,7 @@ export const graphicsVideosWorks: GraphicsVideoWork[] = [
   {
     id: 'graphic-11',
     title: 'MIT Alumni Meet Poster',
-    description: 'Official poster for NMAMIT Alumni Meet – featuring minimalist and modern visual design.',
+    description: 'Poster for the NMAMIT Alumni Meet.',
     image: '/graphics/mit-post.png',
     category: 'graphics',
     tags: ['College', 'Event', 'Poster'],
@@ -146,7 +146,7 @@ export const graphicsVideosWorks: GraphicsVideoWork[] = [
   {
     id: 'graphic-13',
     title: 'Nandaa',
-    description: 'Creative photo artwork titled “ah pretty lil baby.”',
+    description: 'Photo edit titled “ah pretty lil baby.”',
     image: '/graphics/nandaa.png',
     category: 'graphics',
     tags: ['Artwork', 'Creative', 'Portrait'],
@@ -197,7 +197,7 @@ export const graphicsVideosWorks: GraphicsVideoWork[] = [
   {
     id: 'graphic-18',
     title: 'Tatsu Profile Art',
-    description: 'Profile artwork created for Tatsu, showcasing anime-inspired composition.',
+    description: 'Anime-style profile art for Tatsu.',
     image: '/graphics/tatsuu.jpg',
     category: 'graphics',
     tags: ['Character Art', 'Anime', 'Profile'],
@@ -207,7 +207,7 @@ export const graphicsVideosWorks: GraphicsVideoWork[] = [
   {
     id: 'graphic-19',
     title: 'The General Quiz Poster',
-    description: 'The “nonchalant quiz” — official poster design for The General Quiz by Grey Matter.',
+    description: 'The “nonchalant quiz”: poster for The General Quiz by Grey Matter.',
     image: '/graphics/thegeneralquiz_final.jpg',
     category: 'graphics',
     tags: ['Quiz', 'Poster', 'Grey Matter'],
@@ -218,7 +218,7 @@ export const graphicsVideosWorks: GraphicsVideoWork[] = [
   {
     id: 'graphic-20',
     title: 'Vote Parth Campaign Poster',
-    description: 'Campaign poster designed for Parth’s run for Finance Head, emphasizing bold design and clarity.',
+    description: 'Campaign poster for Parth’s run for Finance Head.',
     image: '/graphics/vote-parth.png',
     category: 'graphics',
     tags: ['Campaign', 'Poster', 'Design'],

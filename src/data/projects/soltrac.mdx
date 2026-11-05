@@ -1,6 +1,6 @@
 ---
 title: 'SolTrac'
-description: 'Solana transaction intelligence — predicts failures before you send, explains the cause and suggests a fix.'
+description: 'Tells you if a Solana transaction will fail before you send it, why, and how to fix it.'
 image: '/project/soltrac.jpg'
 technologies: ['TypeScript', 'Solana web3.js', 'Next.js', 'Node.js', 'Monorepo', 'CLI']
 github: 'https://github.com/dhanushlnaik/soltrac'
@@ -10,29 +10,29 @@ role: 'Fullstack Developer'
 team: 'Colosseum hackathon'
 status: 'completed'
 featured: true
-challenges: ['Simulating before signing', 'Turning raw logs into plain English', 'Protocol fingerprinting']
+challenges: ['Simulating before signing', 'Explaining raw logs in plain English', 'Detecting which protocol a tx uses']
 learnings: ['Solana runtime errors in depth', 'SDK design', 'Risk scoring heuristics']
 isPublished: true
 ---
 
 ## The problem
 
-A large share of Solana DeFi transactions fail, and the user usually gets a generic error. Developers get raw logs. Nobody can tell whether it was slippage, a stale blockhash, the compute budget or an account conflict, and nothing says what to do next.
+A lot of Solana DeFi transactions fail. Users get a generic error and developers get raw logs. Was it slippage, a stale blockhash, the compute budget, an account conflict? You usually have to dig to find out.
 
 ## What SolTrac does
 
 ```
-Transaction (unsigned) → soltrac-sdk → Risk score 0–100 + root cause + fix
+Transaction (unsigned) → soltrac-sdk → Risk score 0-100 + root cause + fix
 ```
 
 - **Dual-pass simulation**: a baseline run plus an optimistic run before anything is signed.
 - **8 weighted risk signals** scored from live RPC data.
 - **100+ entry error taxonomy** that matches failures across 26 DeFi protocols.
-- A clear **SEND / REVIEW / DO_NOT_SEND** recommendation.
+- A **SEND / REVIEW / DO_NOT_SEND** verdict.
 - **Three-tier explainer**: deterministic rules first, then log patterns, and AI only when neither matches.
 
-It ships as an **npm SDK**, a **web app** (paste any signature and get answers, no wallet needed) and a **CLI**. It also offers wallet alerts via webhook.
+It comes as an **npm SDK**, a **web app** (paste a signature, no wallet needed) and a **CLI**. You can also get wallet alerts by webhook.
 
-## Built for
+## Hackathon
 
-The **Colosseum hackathon**, entered in both the Infrastructure/Tooling and DeFi/Consumer tracks.
+Built for the **Colosseum hackathon**, in the Infrastructure/Tooling and DeFi/Consumer tracks.

@@ -49,7 +49,7 @@ export const heroConfig = {
   // {skills:N} renders an inline skill chip, <b>…</b> renders highlighted text.
   description: {
     template:
-      'I build Ethereum tooling, games and fullstack products with {skills:0}, {skills:1} and {skills:3} on {skills:2} — and I design the <b>brand, motion and video</b> around them too. Currently running <b>Tatsuik</b>, a one-desk studio out of coastal Karnataka.',
+      'I build Ethereum tooling, games and fullstack products with {skills:0}, {skills:1} and {skills:3} on {skills:2}. I also do the <b>branding, motion and video</b> for them. Right now I run <b>Tatsuik</b>, my small studio in Bhatkal.',
   },
 
   buttons: [

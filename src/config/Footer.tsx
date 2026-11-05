@@ -1,6 +1,6 @@
 export const footerConfig = {
   name: 'Dhanush Naik',
-  tagline: 'Built in Bhatkal with too much chai.',
+  tagline: 'Made in Bhatkal, Karnataka.',
   columns: [
     {
       title: 'Site',

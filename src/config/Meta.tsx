@@ -12,8 +12,8 @@ export interface PageMeta {
 // Base site configuration
 export const siteConfig = {
   name: heroConfig.name,
-  title: 'Dhanush Naik — Fullstack & Web3 Developer',
-  description: 'Dhanush Naik is a fullstack & Web3 developer and designer. He builds Ethereum tooling, games like ETHQuest and ClockThatDaily, and runs Tatsuik.',
+  title: 'Dhanush Naik | Fullstack & Web3 Developer',
+  description: 'Fullstack & Web3 developer and designer. I build Ethereum tooling and games like ETHQuest and ClockThatDaily, and run Tatsuik.',
   url: process.env.NEXT_PUBLIC_URL || 'http://localhost:3000',
   ogImage: '/meta/opengraph-image.png',
   author: {
@@ -59,7 +59,7 @@ export const pageMetadata: Record<string, PageMeta> = {
   '/contact': {
     title: 'Contact - Get in Touch',
     description:
-      "Get in touch with me for collaborations, projects, or opportunities. I'd love to hear from you!",
+      'Freelance, Web3, design or video work. Send me a message or book a call.',
     keywords: ['contact', 'hire', 'collaboration', 'freelance', 'developer'],
     ogImage: '/assets/logo.png',
     twitterCard: 'summary',
@@ -69,7 +69,7 @@ export const pageMetadata: Record<string, PageMeta> = {
   '/work-experience': {
     title: 'Work Experience - Professional Journey',
     description:
-      'Explore my professional work experience across different companies and roles in software development.',
+      'Where I have worked: Tatsuik, Avarch, EtherWorld, CogniMuse and a few Discord communities.',
     keywords: [
       'work experience',
       'career',
@@ -85,7 +85,7 @@ export const pageMetadata: Record<string, PageMeta> = {
   '/projects': {
     title: 'Projects - My Work & Projects Portfolio',
     description:
-      'Discover my projects and work across different technologies and domains. From web apps to mobile solutions.',
+      'Games, Ethereum tools, client sites and older experiments, newest first.',
     keywords: [
       'projects',
       'portfolio',
@@ -101,7 +101,7 @@ export const pageMetadata: Record<string, PageMeta> = {
   '/blog': {
     title: 'Blog - Thoughts & Tutorials',
     description:
-      'Read my thoughts, tutorials, and insights on engineering, programming, and web development.',
+      'Posts about building things, hackathons, blockchain and making a short film.',
     keywords: [
       'blog',
       'tutorials',
@@ -116,7 +116,7 @@ export const pageMetadata: Record<string, PageMeta> = {
   // Resume page
   '/resume': {
     title: 'Resume - Professional CV',
-    description: `View and download ${heroConfig.name}'s professional resume and CV. Technical skills, experience, and qualifications.`,
+    description: `${heroConfig.name}'s resume.`,
     keywords: [
       'resume',
       'cv',
@@ -133,7 +133,7 @@ export const pageMetadata: Record<string, PageMeta> = {
   '/gears': {
     title: 'Uses - Hardware & Apps',
     description:
-      'Discover the tools, devices, and software I use to get my work done efficiently.',
+      'The hardware, apps and browser extensions I use every day.',
     keywords: [
       'setup',
       'tools',

@@ -1,7 +1,7 @@
 export const contactConfig = {
   title: 'Contact',
   description:
-    'Open to freelance contracts, Web3 projects, and design or video work. Fully remote from Bhatkal, Karnataka (IST) with flexible overlap for EU and US. Response within 24 hours.',
+    'I take freelance, Web3, design and video work. I work remotely from Bhatkal, Karnataka (IST) and can overlap with EU and US hours. I usually reply within a day.',
   form: {
     labels: {
       name: 'Name',

@@ -16,9 +16,8 @@ export default function ProjectsPage() {
         <p className="font-mono text-xs text-brand">~/projects</p>
         <h1 className="mt-2 text-4xl font-bold tracking-tight">Projects</h1>
         <p className="text-secondary mt-3 max-w-xl leading-7">
-          Games, Ethereum tooling, client sites and some older experiments.
-          Newest first. The ones with a case study have a write-up on how they
-          were built.
+          Games, Ethereum tools, client sites and older experiments, newest
+          first. Some have a case study on how I built them.
         </p>
       </header>
 

@@ -4,7 +4,7 @@ import { buddyConfig } from '@/config/Buddy';
 import React, { useEffect, useRef, useState } from 'react';
 
 /*
- * "Bit" — a pixel-art mini Dhanush (curly hair, round glasses, pink hoodie).
+ * "Bit": a pixel-art mini Dhanush (curly hair, round glasses, pink hoodie).
  * Hand-drawn on a 16×20 grid and rendered as crisp SVG rects, so there are no
  * image assets to load. On fine-pointer devices Bit trots after the cursor and
  * dozes off when you stop moving; on touch devices it stays put.

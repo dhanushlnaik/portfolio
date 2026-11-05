@@ -1,43 +1,30 @@
 ---
-title: 'Building StrayMate — When Tech Meets Compassion'
-description: 'Behind the scenes of developing StrayMate, a platform to help stray animals find homes.'
+title: 'Building StrayMate'
+description: 'Why and how I built an app to help stray animals get adopted.'
 image: '/blog/building-straymate.png'
 tags: ['nextjs', 'typescript', 'projects', 'socialimpact']
 date: '2025-02-14'
 isPublished: true
 ---
 
-## The Thought Behind It
+## Why I built it
 
-I’ve always believed that technology should solve real problems — not just impress people.  
-**StrayMate** was born from that belief.
+There are a lot of stray animals where I live, and the people who rescue or feed them mostly coordinate over WhatsApp groups. Adoption drives happen, but there wasn't one simple place to post "I found this dog, it needs a home" and have someone nearby see it.
 
-Every day, I saw stray animals in need of help. Adoption drives existed, but not a dedicated, simple platform that connected rescuers and helpers.
+So I built **StrayMate**.
 
-So, I built one.
+## Stack
 
----
+- **Next.js** for frontend and backend
+- **TypeScript**
+- **Prisma + PostgreSQL** for the database
+- **NextAuth.js** for sign-in
+- **Tailwind CSS** for styling
 
-## The Tech Stack
+## What was hard
 
-StrayMate was built with:
-- **Next.js** for frontend & backend logic  
-- **TypeScript** for type safety  
-- **Prisma + PostgreSQL** for the database  
-- **NextAuth.js** for authentication  
-- **Tailwind CSS** for clean UI
+Building the screens was quick. Making them easy for people who aren't very online took longer. I cut a lot of fields from the listing form after watching friends try to use it, because every extra field meant fewer people finished posting.
 
----
+## What I took from it
 
-## The Challenge
-
-Designing it was easy — *but making it usable* was tough.  
-I learned that empathy-driven design matters more than fancy interfaces.
-
-The real win wasn’t the code — it was knowing a project like this could genuinely help someone.
-
----
-
-## The Takeaway
-
-This project taught me how to **merge compassion with technology** — and that’s something I carry into every project now.
+I care more about whether a project gets used than how impressive the code is. StrayMate was small, but it was the first thing I built that I could imagine helping someone I'd never meet.

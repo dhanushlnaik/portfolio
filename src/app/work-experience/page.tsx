@@ -31,7 +31,7 @@ export default function WorkExperiencePage() {
             Work Experience
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            My work experiences across different companies and roles.
+            Where I&apos;ve worked and what I did there.
           </p>
         </div>
 

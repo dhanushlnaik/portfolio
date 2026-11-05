@@ -13,7 +13,7 @@ export default function Projects() {
       <SectionHeading
         index="01"
         heading="Projects"
-        note="Things I've shipped recently — games, dev tools and client sites."
+        note="Recent work: games, dev tools and client sites."
         href="/projects"
         hrefLabel={`All ${projects.length}`}
       />
