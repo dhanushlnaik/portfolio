@@ -43,7 +43,8 @@ export async function generateMetadata({
     };
   }
 
-  const { title, description, image } = caseStudy.frontmatter;
+  const { title, description } = caseStudy.frontmatter;
+  const image = caseStudy.frontmatter.image ?? siteConfig.ogImage;
 
   return {
     metadataBase: new URL(siteConfig.url),

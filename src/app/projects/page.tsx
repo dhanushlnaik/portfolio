@@ -1,58 +1,40 @@
 import Container from '@/components/common/Container';
 import { ProjectList } from '@/components/projects/ProjectList';
-import { Separator } from '@/components/ui/separator';
-import { projects } from '@/config/Projects';
 import { generateMetadata as getMetadata } from '@/config/Meta';
+import { projects } from '@/config/Projects';
 import { Metadata } from 'next';
 
-export const metadata: Metadata = {
-  ...getMetadata('/projects'),
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1
-    }
-  }
-};
+export const metadata: Metadata = getMetadata('/projects') as Metadata;
 
 export default function ProjectsPage() {
+  const live = projects.filter((p) => p.status !== 'archived');
+  const archive = projects.filter((p) => p.status === 'archived');
+
   return (
-    <Container className="py-16">
-      <div className="space-y-8">
-        {/* Header */}
-        <div className="space-y-4 text-center">
-          <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
-            Projects
-          </h1>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            My projects and work across different technologies and domains.
-          </p>
-        </div>
+    <Container className="py-12">
+      <header>
+        <p className="font-mono text-xs text-brand">~/projects</p>
+        <h1 className="mt-2 text-4xl font-bold tracking-tight">Projects</h1>
+        <p className="text-secondary mt-3 max-w-xl leading-7">
+          Games, Ethereum tooling, client sites and some older experiments.
+          Newest first. The ones with a case study have a write-up on how they
+          were built.
+        </p>
+      </header>
 
-        <Separator />
+      <section className="mt-10">
+        <h2 className="font-mono text-xs text-muted-foreground">
+          Shipped & live · {live.length}
+        </h2>
+        <ProjectList className="mt-4" projects={live} />
+      </section>
 
-        {/* Projects */}
-        <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-semibold">
-              All Projects
-              {projects.length > 0 && (
-                <span className="ml-2 text-sm font-normal text-muted-foreground">
-                  ({projects.length}{' '}
-                  {projects.length === 1 ? 'project' : 'projects'})
-                </span>
-              )}
-            </h2>
-          </div>
-
-          <ProjectList projects={projects} />
-        </div>
-      </div>
+      <section className="mt-16">
+        <h2 className="font-mono text-xs text-muted-foreground">
+          Archive · {archive.length}
+        </h2>
+        <ProjectList className="mt-4" projects={archive} />
+      </section>
     </Container>
   );
 }

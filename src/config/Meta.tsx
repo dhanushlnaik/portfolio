@@ -13,7 +13,7 @@ export interface PageMeta {
 export const siteConfig = {
   name: heroConfig.name,
   title: 'Dhanush Naik — Fullstack & Web3 Developer',
-  description: 'Fullstack & Web3 developer, designer and video editor. Founder of Tatsuik Tech Services, Bhatkal, Karnataka.',
+  description: 'Dhanush Naik is a fullstack & Web3 developer and designer. He builds Ethereum tooling, games like ETHQuest and ClockThatDaily, and runs Tatsuik.',
   url: process.env.NEXT_PUBLIC_URL || 'http://localhost:3000',
   ogImage: '/meta/opengraph-image.png',
   author: {
@@ -31,6 +31,10 @@ export const siteConfig = {
     'nextjs',
     'typescript',
     'web development',
+    'web3',
+    'ethereum',
+    'solana',
+    'tatsuik',
     heroConfig.name.toLowerCase(),
   ],
 };
@@ -39,7 +43,7 @@ export const pageMetadata: Record<string, PageMeta> = {
   // Home page
   '/': {
     title: `${heroConfig.name} - ${heroConfig.title}`,
-    description: `${about.description} Explore my projects, experience, and technical expertise.`,
+    description: siteConfig.description,
     keywords: [
       'portfolio',
       'developer',
@@ -127,7 +131,7 @@ export const pageMetadata: Record<string, PageMeta> = {
 
   // Gears page
   '/gears': {
-    title: 'Gears - My Setup & Tools',
+    title: 'Uses - Hardware & Apps',
     description:
       'Discover the tools, devices, and software I use to get my work done efficiently.',
     keywords: [
@@ -142,22 +146,6 @@ export const pageMetadata: Record<string, PageMeta> = {
     twitterCard: 'summary_large_image',
   },
 
-  // Setup page
-  '/setup': {
-    title: 'Setup Guide - VS Code Configuration',
-    description:
-      'Complete guide to setting up VS Code with my preferred configuration, extensions, and fonts for optimal development.',
-    keywords: [
-      'vscode',
-      'setup',
-      'configuration',
-      'extensions',
-      'development environment',
-      'guide',
-    ],
-    ogImage: '/meta/setup.png',
-    twitterCard: 'summary_large_image',
-  },
 };
 
 // Helper function to get metadata for a specific page

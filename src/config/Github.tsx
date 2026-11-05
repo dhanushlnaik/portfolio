@@ -7,7 +7,7 @@
 
 export const githubConfig = {
   username: 'dhanushlnaik',
-  apiUrl: 'https://github-contributions-api.deno.dev',
+  apiUrl: 'https://github-contributions-api.jogruber.de/v4',
 
   // Display settings
   title: 'GitHub Activity',
@@ -43,20 +43,8 @@ export const githubConfig = {
 
   // Theme configuration for dark and light modes
   theme: {
-    dark: [
-      'rgb(22, 27, 34)', // Very dark for no contributions
-      'rgb(14, 68, 41)', // Dark green
-      'rgb(0, 109, 50)', // Medium green
-      'rgb(38, 166, 65)', // Bright green
-      'rgb(57, 211, 83)', // Very bright green
-    ],
-    light: [
-      'rgb(235, 237, 240)', // Light gray
-      'rgb(155, 233, 168)', // Light green
-      'rgb(64, 196, 99)', // Medium green
-      'rgb(48, 161, 78)', // Dark green
-      'rgb(33, 110, 57)', // Very dark green
-    ],
+    dark: ['#27272a', '#5c2d1a', '#9a4422', '#d9622b', '#ff8a4c'],
+    light: ['#ececee', '#ffd3bd', '#ffa676', '#f2733a', '#c4501f'],
   },
 
   // Error state configuration

@@ -6,26 +6,13 @@ export interface NavItem {
 export const navbarConfig = {
   logo: {
     src: '/assets/logo.png',
-    alt: 'logo',
-    width: 100,
-    height: 100,
+    alt: 'Dhanush Naik',
   },
   navItems: [
-    {
-      label: 'Work',
-      href: '/work-experience',
-    },
-    {
-      label: 'Blogs',
-      href: '/blog',
-    },
-    {
-      label: 'Projects',
-      href: '/projects',
-    },
-    {
-      label: 'Graphics & Videos',
-      href: '/graphics-videos',
-    },
+    { label: 'Projects', href: '/projects' },
+    { label: 'Work', href: '/work-experience' },
+    { label: 'Design', href: '/graphics-videos' },
+    { label: 'Writing', href: '/blog' },
+    { label: 'Contact', href: '/contact' },
   ] as NavItem[],
 };

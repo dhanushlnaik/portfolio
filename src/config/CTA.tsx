@@ -11,9 +11,12 @@ export const ctaConfig = {
   profileAlt: 'Profile',
 
   // CTA button settings
-  linkText: 'Book a Free Call',
+  linkText: 'Book a 20-min call',
   calLink: 'dhanush-naik-j1zzfe',
 
-  // Pre-text message
-  preText: "Hey, you scrolled this far, let's talk.",
+  // Headline + supporting line
+  preText: 'Got something that needs building, and maybe a launch video too?',
+  subText:
+    'Open to freelance, Web3 and design work. I work remotely on IST with overlap for EU and US, and reply within a day.',
+  email: 'dhanushlnaik@gmail.com',
 };

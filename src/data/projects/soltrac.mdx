@@ -1,0 +1,38 @@
+---
+title: 'SolTrac'
+description: 'Solana transaction intelligence — predicts failures before you send, explains the cause and suggests a fix.'
+image: '/project/soltrac.jpg'
+technologies: ['TypeScript', 'Solana web3.js', 'Next.js', 'Node.js', 'Monorepo', 'CLI']
+github: 'https://github.com/dhanushlnaik/soltrac'
+live: 'https://soltracweb.vercel.app/'
+timeline: 'Hackathon build, 2026'
+role: 'Fullstack Developer'
+team: 'Colosseum hackathon'
+status: 'completed'
+featured: true
+challenges: ['Simulating before signing', 'Turning raw logs into plain English', 'Protocol fingerprinting']
+learnings: ['Solana runtime errors in depth', 'SDK design', 'Risk scoring heuristics']
+isPublished: true
+---
+
+## The problem
+
+A large share of Solana DeFi transactions fail, and the user usually gets a generic error. Developers get raw logs. Nobody can tell whether it was slippage, a stale blockhash, the compute budget or an account conflict, and nothing says what to do next.
+
+## What SolTrac does
+
+```
+Transaction (unsigned) → soltrac-sdk → Risk score 0–100 + root cause + fix
+```
+
+- **Dual-pass simulation**: a baseline run plus an optimistic run before anything is signed.
+- **8 weighted risk signals** scored from live RPC data.
+- **100+ entry error taxonomy** that matches failures across 26 DeFi protocols.
+- A clear **SEND / REVIEW / DO_NOT_SEND** recommendation.
+- **Three-tier explainer**: deterministic rules first, then log patterns, and AI only when neither matches.
+
+It ships as an **npm SDK**, a **web app** (paste any signature and get answers, no wallet needed) and a **CLI**. It also offers wallet alerts via webhook.
+
+## Built for
+
+The **Colosseum hackathon**, entered in both the Infrastructure/Tooling and DeFi/Consumer tracks.

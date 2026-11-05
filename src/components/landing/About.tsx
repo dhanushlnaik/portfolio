@@ -1,40 +1,51 @@
-import { about, mySkills } from '@/config/About';
-import Image from 'next/image';
+import { about, now, stats } from '@/config/About';
 import React from 'react';
 
 import Container from '../common/Container';
 import SectionHeading from '../common/SectionHeading';
-import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 
 export default function About() {
   return (
     <Container className="mt-20">
-      <SectionHeading subHeading="About" heading="Me" />
-      {/* About me */}
-      <div className="mt-8 flex flex-col gap-4 md:flex-row">
-        <Image
-          src="/assets/logo.png"
-          alt="About"
-          width={100}
-          height={100}
-          className="border-secondary size-60 rounded-md border-2 bg-blue-300 dark:bg-yellow-300"
-        />
-        <div className="mt-4">
-          <h3 className="text-2xl font-bold">{about.name}</h3>
-          <p className="text-secondary mt-4">{about.description}</p>
-          <p className="text-secondary mt-8 font-bold">Skills</p>
-          <div className="flex flex-wrap gap-2">
-            {mySkills.map((skill) => (
-              <Tooltip key={skill.key}>
-                <TooltipTrigger asChild>
-                  <div className="mt-4 size-6 hover:cursor-pointer">{skill}</div>
-                </TooltipTrigger>
-                <TooltipContent>{skill.key}</TooltipContent>
-              </Tooltip>
-            ))}
-          </div>
+      <SectionHeading index="03" heading="About" />
+
+      <div className="mt-6 grid gap-8 md:grid-cols-[1fr_15rem]">
+        <div className="text-secondary space-y-4 leading-7">
+          {about.paragraphs.map((p) => (
+            <p key={p.slice(0, 24)}>{p}</p>
+          ))}
         </div>
+
+        <aside className="h-fit rounded-xl border border-dashed p-4">
+          <p className="flex items-center justify-between font-mono text-xs text-muted-foreground">
+            <span className="text-brand">/now</span>
+            <span>{now.updated}</span>
+          </p>
+          <ul className="mt-3 space-y-2 text-sm">
+            {now.items.map((item) => (
+              <li key={item} className="flex gap-2">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-brand" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </aside>
       </div>
+
+      <dl className="mt-8 grid grid-cols-2 overflow-hidden rounded-xl border sm:grid-cols-4">
+        {stats.map((s, i) => (
+          <div
+            key={s.label}
+            className={`p-4 ${i % 2 === 1 ? 'border-l' : ''} ${i > 1 ? 'border-t sm:border-t-0' : ''} ${i === 2 ? 'sm:border-l' : ''}`}
+          >
+            <dt className="sr-only">{s.label}</dt>
+            <dd className="text-2xl font-bold tracking-tight">{s.value}</dd>
+            <dd className="font-mono text-[11px] text-muted-foreground">
+              {s.label}
+            </dd>
+          </div>
+        ))}
+      </dl>
     </Container>
   );
 }

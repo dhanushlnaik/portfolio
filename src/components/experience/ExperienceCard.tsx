@@ -16,7 +16,9 @@ interface ExperienceCardProps {
 }
 
 const parseDescription = (text: string): string => {
-  return text.replace(/\*(.*?)\*/g, '<b>$1</b>');
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<b class="font-semibold text-foreground">$1</b>')
+    .replace(/\*(.+?)\*/g, '<b>$1</b>');
 };
 
 export function ExperienceCard({ experience }: ExperienceCardProps) {
@@ -25,16 +27,16 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
       {/* Company Header */}
       <div className="flex flex-col gap-2 md:flex-row md:justify-between">
         {/* Left Side */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <Image
             src={experience.image}
             alt={experience.company}
             width={100}
             height={100}
-            className="size-12 rounded-md"
+            className="size-11 shrink-0 rounded-lg border"
           />
           <div className="flex flex-col">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <h3
                 className={cn(
                   'text-lg font-bold',
@@ -100,17 +102,16 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
                 </Tooltip>
               )}
               {experience.isCurrent && (
-                <div className="flex items-center gap-1 rounded-md border-green-300 bg-green-500/10 px-2 py-1 text-xs">
-                  <div className="size-2 rounded-full bg-green-500 animate-pulse"></div>
-                  Working
-                </div>
+                <span className="rounded-full border border-brand/40 px-2 py-0.5 font-mono text-[10px] text-brand">
+                  now
+                </span>
               )}
             </div>
-            <p>{experience.position}</p>
+            <p className="text-sm text-muted-foreground">{experience.position}</p>
           </div>
         </div>
         {/* Right Side */}
-        <div className="text-secondary flex flex-col md:text-right">
+        <div className="flex flex-col font-mono text-xs text-muted-foreground md:text-right">
           <p>
             {experience.startDate} -{' '}
             {experience.isCurrent ? 'Present' : experience.endDate}
@@ -121,8 +122,7 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
 
       {/* Technologies */}
       <div>
-        <h4 className="text-md mt-4 mb-2 font-semibold">Technologies</h4>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-y-2">
           {experience.technologies.map((technology, techIndex: number) => (
             <Skill
               key={techIndex}
@@ -136,18 +136,18 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
       </div>
 
       {/* Description */}
-      <div className="text-secondary flex flex-col">
+      <ul className="text-secondary flex list-disc flex-col gap-1.5 pl-4 text-sm leading-6 marker:text-brand">
         {experience.description.map(
           (description: string, descIndex: number) => (
-            <p
+            <li
               key={descIndex}
               dangerouslySetInnerHTML={{
-                __html: `• ${parseDescription(description)}`,
+                __html: parseDescription(description),
               }}
             />
           ),
         )}
-      </div>
+      </ul>
     </div>
   );
 }

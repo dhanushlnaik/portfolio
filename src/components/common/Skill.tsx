@@ -12,10 +12,10 @@ export default function Skill({ name, href, children }: SkillProps) {
     <Link
       href={href ?? ''}
       target="_blank"
-      className="inline-flex items-center text-sm bg-black/5 dark:bg-white/15 border border-dashed dark:border-white/30 border-black/20 py-1 px-2 rounded-md skill-inner-shadow self-end text-black dark:text-white"
+      className="mx-0.5 inline-flex translate-y-[3px] items-center gap-1 rounded-full border bg-muted/60 px-2 py-0.5 text-sm font-medium text-foreground transition-colors hover:border-brand/60"
     >
-      <div className="size-4 flex-shrink-0">{children}</div>
-      <p className="ml-1 text-sm font-bold">{name}</p>
+      <span className="size-3.5 shrink-0">{children}</span>
+      {name}
     </Link>
   );
 }

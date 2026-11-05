@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# dhanush.
 
-## Getting Started
+Personal site of **Dhanush Naik**: fullstack & Web3 developer, designer, and founder of [Tatsuik](https://www.tatsuik.com/).
 
-First, run the development server:
+Built with Next.js 15, React 19, Tailwind CSS v4 and MDX.
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| What | File |
+| --- | --- |
+| Hero, status pill, socials | `src/config/Hero.tsx` |
+| Projects (cards, order, status) | `src/config/Projects.tsx` |
+| Project case studies | `src/data/projects/<slug>.mdx` |
+| Screenshots | `public/project/*.jpg` |
+| About, `/now`, stats | `src/config/About.tsx` |
+| Studio services | `src/config/Studio.ts` |
+| Work history | `src/config/Experience.tsx` |
+| Blog posts | `src/data/blog/*.mdx` |
+| Footer links | `src/config/Footer.tsx` |
+| Pixel mascot "Bit" | `src/components/common/PixelBuddy.tsx` (toggle in `src/config/Buddy.ts`) |
+| Brand colours | `--brand` / `--brand-soft` in `src/app/globals.css` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Refreshing project screenshots
 
-## Learn More
+Screenshots are 1440×900 captures of each live site, saved as JPEGs in `public/project/`. With Chrome installed:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new \
+  --window-size=1440,900 --virtual-time-budget=12000 \
+  --screenshot=shot.png https://example.com
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Env
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `GEMINI_API_KEY`: portfolio chat assistant (`/api/chat`)
+- `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`: contact form delivery (`/api/contact`)
+- `NEXT_PUBLIC_UMAMI_ID`, `NEXT_PUBLIC_UMAMI_SRC`: analytics (optional)
+- `NEXT_PUBLIC_URL`: canonical site URL

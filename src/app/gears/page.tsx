@@ -30,10 +30,10 @@ export default function GearsPage() {
         {/* Header */}
         <div className="space-y-4 text-center">
           <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
-            Gears
+            Uses
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            My gears and tools i use to get my work done.
+            The hardware, apps and browser extensions I use every day.
           </p>
         </div>
         <Separator />
