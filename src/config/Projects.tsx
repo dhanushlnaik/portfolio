@@ -1,125 +1,178 @@
-import Appwrite from '@/components/technologies/Appwrite';
-import Bun from '@/components/technologies/Bun';
-import MongoDB from '@/components/technologies/MongoDB';
-import NextJs from '@/components/technologies/NextJs';
-import NodeJs from '@/components/technologies/NodeJs';
-import PostgreSQL from '@/components/technologies/PostgreSQL';
-import Prisma from '@/components/technologies/Prisma';
-import ReactIcon from '@/components/technologies/ReactIcon';
-import TailwindCss from '@/components/technologies/TailwindCss';
-import TypeScript from '@/components/technologies/TypeScript';
-import Vercel from '@/components/technologies/Vercel';
 import { Project } from '@/types/project';
 
-// `projectDetailsPageSlug` must match a file in src/data/projects/<slug>.mdx —
-// the case-study route resolves the slug straight to that filename, so a slug
-// without a matching .mdx renders a 404. Keep `details` false until one exists.
+// Newest first. `projectDetailsPageSlug` must match src/data/projects/<slug>.mdx
+// whenever `details` is true — the case-study route resolves the slug straight
+// to that file, so a slug without a matching .mdx renders a 404.
 export const projects: Project[] = [
   {
-    title: 'StrayMate',
+    title: 'ETHQuest',
     description:
-      'Platform to find loving homes for stray animals — report sightings, coordinate rescues, and connect feeders with local volunteers.',
-    image: '/project/straymate.png',
-    technologies: [
-      { name: 'Next.js', icon: <NextJs key="nextjs" /> },
-      { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
-      { name: 'tRPC', icon: <ReactIcon key="react" /> },
-      { name: 'Prisma', icon: <Prisma key="prisma" /> },
-      { name: 'PostgreSQL', icon: <PostgreSQL key="postgresql" /> },
-      { name: 'Tailwind CSS', icon: <TailwindCss key="tailwindcss" /> },
-    ],
+      'A pixel-art game for the EIPsInsight booth at Devcon 8 — quick quests on Ethereum standards, 392 EIPs as collectible cards, and best-of-3 card duels.',
+    year: '2026',
+    category: 'Web3 · Game',
+    image: '/project/ethquest.jpg',
+    stack: ['Next.js 16', 'TypeScript', 'Prisma', 'PostgreSQL', 'Passkeys', 'Motion'],
+    github: 'https://github.com/dhanushlnaik/ethquest',
+    live: 'https://www.tatsuik.xyz/play',
+    status: 'live',
+    featured: true,
     details: true,
-    projectDetailsPageSlug: '/projects/straymate',
-    isWorking: true,
+    projectDetailsPageSlug: '/projects/ethquest',
   },
   {
-    title: 'EIPs Insight',
+    title: 'ClockThatDaily',
     description:
-      'Interactive Ethereum dashboard for exploring EIPs and ERCs — sprint tracking, editor leaderboards and automated GitHub pipelines.',
-    image: '/project/eips-insights.png',
-    technologies: [
-      { name: 'Next.js', icon: <NextJs key="nextjs" /> },
-      { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
-      { name: 'MongoDB', icon: <MongoDB key="mongodb" /> },
-      { name: 'Ethereum', icon: <ReactIcon key="react" /> },
-    ],
+      'A 4-minute daily gauntlet of internet and pop-culture lore — Emojidle, Bad Plot, Soundbite and Cluster — with streaks, Aura and a global leaderboard.',
+    year: '2026',
+    category: 'Daily game',
+    image: '/project/clockthatdaily.jpg',
+    stack: ['Next.js', 'TypeScript', 'Vercel'],
+    live: 'https://clockthatdaily.com/',
+    status: 'live',
+    featured: true,
+    details: true,
+    projectDetailsPageSlug: '/projects/clockthatdaily',
+  },
+  {
+    title: 'SolTrac',
+    description:
+      'Predicts whether a Solana transaction will fail before you send it, explains why in plain language, and suggests the fix. SDK, web app and CLI.',
+    year: '2026',
+    category: 'Solana · Dev tooling',
+    image: '/project/soltrac.jpg',
+    stack: ['TypeScript', 'Solana', 'Next.js', 'SDK', 'CLI'],
+    github: 'https://github.com/dhanushlnaik/soltrac',
+    live: 'https://soltracweb.vercel.app/',
+    status: 'live',
+    featured: true,
+    details: true,
+    projectDetailsPageSlug: '/projects/soltrac',
+  },
+  {
+    title: 'Real Hex to Decimal',
+    description:
+      'An instant hex ↔ decimal converter with step-by-step math, Wei/Gwei/Ether helpers for Web3 devs, and seven languages.',
+    year: '2026',
+    category: 'Tool',
+    image: '/project/realhextodecimal.jpg',
+    stack: ['Astro', 'TypeScript', 'i18n', 'Cloudflare'],
+    live: 'https://realhextodecimal.com/',
+    status: 'live',
+    featured: true,
+    details: false,
+    projectDetailsPageSlug: '/projects/realhextodecimal',
+  },
+  {
+    title: 'Tatsuik',
+    description:
+      'Site for my studio — fullstack, Web3, brand and video from one desk. Designed, written and built end to end.',
+    year: '2026',
+    category: 'Studio site',
+    image: '/project/tatsuik.jpg',
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+    github: 'https://github.com/dhanushlnaik/tatsuik',
+    live: 'https://www.tatsuik.com/',
+    status: 'live',
+    details: false,
+    projectDetailsPageSlug: '/projects/tatsuik',
+  },
+  {
+    title: 'Rohit Contracting L.L.C',
+    description:
+      'Marketing site for a Dubai villa-construction firm — services, milestones and project gallery, with quote requests straight to WhatsApp.',
+    year: '2026',
+    category: 'Client',
+    image: '/project/rohit-contracting.jpg',
+    stack: ['Next.js', 'shadcn/ui', 'Framer Motion', 'Vercel'],
+    github: 'https://github.com/dhanushlnaik/RohitContractingLLC',
+    live: 'https://rohit-contracting-llc.vercel.app/',
+    status: 'live',
+    details: false,
+    projectDetailsPageSlug: '/projects/rohit-contracting',
+  },
+  {
+    title: 'Khel.fun',
+    description:
+      'Landing site for a Web3 gaming platform — a scroll-driven, GSAP-animated hero with a loud synthwave look.',
+    year: '2025',
+    category: 'Client · Web3',
+    image: '/project/khelfun.jpg',
+    stack: ['Next.js', 'GSAP', 'React'],
+    github: 'https://github.com/dhanushlnaik/Khel.fun-website',
+    live: 'https://khel-fun-website.vercel.app/',
+    status: 'live',
+    details: false,
+    projectDetailsPageSlug: '/projects/khelfun',
+  },
+  {
+    title: 'EIPsInsight',
+    description:
+      'Ethereum standards observability — proposal lifecycles, upgrade timelines and editor activity for EIPs, ERCs and RIPs. Built at Avarch.',
+    year: '2023–26',
+    category: 'Ethereum · Analytics',
+    image: '/project/eipsinsight.jpg',
+    stack: ['Next.js', 'TypeScript', 'MongoDB', 'PostgreSQL', 'Prisma'],
+    live: 'https://eipsinsight.com/',
+    status: 'live',
     details: true,
     projectDetailsPageSlug: '/projects/eipsinsight',
-    isWorking: true,
-  },
-  {
-    title: 'CSI NMAMIT Website',
-    description:
-      'Official website for the CSI chapter at NMAM Institute of Technology, built as lead developer over three weeks.',
-    image: '/project/csi-nmamit.png',
-    technologies: [
-      { name: 'Next.js', icon: <NextJs key="nextjs" /> },
-      { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
-      { name: 'Tailwind CSS', icon: <TailwindCss key="tailwindcss" /> },
-    ],
-    github: 'https://github.com/dhanushlnaik/csi-nmamit',
-    details: true,
-    projectDetailsPageSlug: '/projects/csinmamit',
-    isWorking: false,
-  },
-  {
-    title: 'DeliverZip',
-    description:
-      'Regional delivery platform routing parcels over existing bus and train networks. Built under hackathon time pressure.',
-    image: '/project/deliverzip.png',
-    technologies: [
-      { name: 'Next.js', icon: <NextJs key="nextjs" /> },
-      { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
-      { name: 'Node.js', icon: <NodeJs key="nodejs" /> },
-    ],
-    details: true,
-    projectDetailsPageSlug: '/projects/deliverzip',
-    isWorking: false,
   },
   {
     title: 'Not Amy',
     description:
-      'A verified Discord gaming bot with community features, maintained for a 45,000-member server.',
-    image: '/project/notamy.png',
-    technologies: [
-      { name: 'Node.js', icon: <NodeJs key="nodejs" /> },
-      { name: 'Discord.js', icon: <ReactIcon key="react" /> },
-      { name: 'MongoDB', icon: <MongoDB key="mongodb" /> },
-    ],
+      'A verified Discord gaming bot with community features, maintained for a 40,000+ member server.',
+    year: '2021–24',
+    category: 'Discord bot',
+    stack: ['Node.js', 'Discord.js', 'MongoDB'],
+    github: 'https://github.com/dhanushlnaik/Amy-Sensei',
+    status: 'archived',
     details: true,
     projectDetailsPageSlug: '/projects/amysensei',
-    isWorking: true,
+  },
+  {
+    title: 'StrayMate',
+    description:
+      'Connects people with stray animals that need a home — listings, search and secure sign-in.',
+    year: '2024',
+    category: 'Social impact',
+    stack: ['Next.js', 'tRPC', 'Prisma', 'PostgreSQL'],
+    github: 'https://github.com/dhanushlnaik/straymate',
+    status: 'archived',
+    details: true,
+    projectDetailsPageSlug: '/projects/straymate',
   },
   {
     title: 'EasyFarm',
-    description: 'Farm management system for tracking crops, inputs and yields.',
-    image: '/project/easyfarm.png',
-    technologies: [
-      { name: 'Next.js', icon: <NextJs key="nextjs" /> },
-      { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
-      { name: 'Prisma', icon: <Prisma key="prisma" /> },
-      { name: 'PostgreSQL', icon: <PostgreSQL key="postgresql" /> },
-    ],
+    description:
+      'Connects Indian farmers directly with buyers of locally sourced produce.',
+    year: '2023',
+    category: 'Marketplace',
+    stack: ['Next.js', 'TypeScript', 'PostgreSQL'],
+    github: 'https://github.com/dhanushlnaik/easyfarm',
+    status: 'archived',
     details: true,
     projectDetailsPageSlug: '/projects/easyfarm',
-    isWorking: false,
   },
   {
-    title: 'Appwrite MCP Server',
+    title: 'CSI NMAMIT',
     description:
-      'Model Context Protocol server exposing Appwrite database operations as tools an AI agent can call directly.',
-    image: '/project/appwrite.png',
-    link: 'https://mcp.dhanushlnaik.tech/',
-    technologies: [
-      { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
-      { name: 'Bun', icon: <Bun key="bun" /> },
-      { name: 'Vercel', icon: <Vercel key="vercel" /> },
-      { name: 'Appwrite', icon: <Appwrite key="appwrite" /> },
-    ],
-    github: 'https://github.com/dhanushlnaik/mcp-server',
-    live: 'https://mcp.dhanushlnaik.tech/',
-    details: false,
-    projectDetailsPageSlug: '/projects/appwrite-mcp-server',
-    isWorking: true,
+      'Website for the CSI student chapter at NMAM Institute of Technology, built as lead developer.',
+    year: '2024',
+    category: 'College',
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+    status: 'archived',
+    details: true,
+    projectDetailsPageSlug: '/projects/csinmamit',
+  },
+  {
+    title: 'DeliverZip',
+    description:
+      'Hackathon prototype for routing regional parcels over existing bus and train networks.',
+    year: '2024',
+    category: 'Hackathon',
+    stack: ['React', 'Node.js', 'Express', 'MongoDB'],
+    status: 'archived',
+    details: true,
+    projectDetailsPageSlug: '/projects/deliverzip',
   },
 ];

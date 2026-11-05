@@ -61,52 +61,37 @@ export default function CTA({
 
   return (
     <>
-      <Container className="mt-20 border border-dashed dark:border-white/10 border-black/20 py-8 rounded-md ">
-        <div className="sm:px-12 px-6 mt-6 pb-8 sm:flex sm:justify-between sm:items-center w-full flex-col">
-          <p className="opacity-50 text-base md:text-xl mb-4 sm:mb-3 text-center">
+      <Container className="mt-20">
+        <div className="relative overflow-hidden rounded-2xl border bg-brand-soft/50 p-6 sm:p-10">
+          <div className="bg-dots-solid absolute inset-0 -z-10 opacity-60" />
+          <p className="font-mono text-xs text-brand">08 / say hi</p>
+          <h2 className="mt-2 max-w-md text-2xl font-bold tracking-tight text-balance sm:text-3xl">
             {preText}
+          </h2>
+          <p className="text-secondary mt-3 max-w-md text-sm leading-6">
+            {ctaConfig.subText}
           </p>
-          <div className="w-full sm:w-auto mt-4 sm:mt-0 flex justify-center sm:justify-end">
-            <div
-              className="inline-flex items-center text-sm bg-black/5 dark:bg-white/15 border border-dashed dark:border-white/30 border-black/20 py-1 px-2 rounded-md shadow-[0_0_5px_rgba(0,0,0,0.1)] dark:shadow-[0_0_5px_rgba(255,255,255,0.1)] self-end text-black dark:text-white cursor-pointer transition-all group"
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <button
+              type="button"
               onClick={handleButtonClick}
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-brand-foreground transition-opacity hover:opacity-90"
             >
-              <div className="flex items-center gap-2 group-hover:gap-8 transition-all duration-300 relative z-20">
-                <div className="w-5 h-5 rounded-full overflow-hidden flex-shrink-0">
-                  <Image
-                    alt={profileAlt}
-                    width={20}
-                    height={20}
-                    className="w-full h-full object-cover"
-                    src={profileImage}
-                    style={{ color: 'transparent' }}
-                  />
-                </div>
-                <div className="flex items-center gap-0 absolute left-[24px] transform -translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-3 h-3"
-                  >
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5v14"></path>
-                  </svg>
-                  <div className="w-5 h-5 rounded-full bg-black/10 dark:bg-white/10  flex items-center justify-center text-[8px] ml-1 mr-2">
-                    You
-                  </div>
-                </div>
-                <span className="whitespace-nowrap relative block text-sm font-bold ml-0 group-hover:ml-4 transition-all duration-300">
-                  {linkText}
-                </span>
-              </div>
-            </div>
+              <Image
+                alt={profileAlt}
+                width={20}
+                height={20}
+                className="size-5 rounded-full bg-brand-soft"
+                src={profileImage}
+              />
+              {linkText}
+            </button>
+            <a
+              href={`mailto:${ctaConfig.email}`}
+              className="inline-flex items-center justify-center gap-2 rounded-lg border bg-background px-4 py-2.5 font-mono text-sm transition-colors hover:border-brand/50"
+            >
+              {ctaConfig.email}
+            </a>
           </div>
         </div>
       </Container>

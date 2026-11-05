@@ -27,60 +27,34 @@ export const skillComponents = {
 };
 
 export const heroConfig = {
-  // Personal Information
   name: 'Dhanush Naik',
   title: 'Fullstack & Web3 Developer · Designer',
   avatar: '/assets/logo.png',
+  location: 'Bhatkal, Karnataka',
+  timezone: 'Asia/Kolkata',
 
-  // Skills Configuration
-  skills: [
-    {
-      name: 'Typescript',
-      href: 'https://www.typescriptlang.org/',
-      component: 'TypeScript',
-    },
-    {
-      name: 'React',
-      href: 'https://react.dev/',
-      component: 'ReactIcon',
-    },
-    {
-      name: 'Next.js',
-      href: 'https://nextjs.org/',
-      component: 'NextJs',
-    },
-    {
-      name: 'Bun',
-      href: 'https://bun.sh/',
-      component: 'Bun',
-    },
-    {
-      name: 'PostgreSQL',
-      href: 'https://www.postgresql.org/',
-      component: 'PostgreSQL',
-    },
-  ],
-
-  // Description Configuration
-  description: {
-    template:
-      'I build fullstack web apps and Ethereum tooling with TypeScript, React, Next.js and PostgreSQL — then design the <b>brand, motion and video</b> around them. Founder of <b>Tatsuik Tech Services</b>, shipping from Bhatkal, Karnataka.',
+  // Small "currently" pill above the name. Keep it short and current.
+  status: {
+    text: 'Shipping ETHQuest for Devcon 8, Mumbai',
+    href: '/projects/ethquest',
   },
 
-  // Buttons Configuration
+  skills: [
+    { name: 'TypeScript', href: 'https://www.typescriptlang.org/', component: 'TypeScript' },
+    { name: 'Next.js', href: 'https://nextjs.org/', component: 'NextJs' },
+    { name: 'PostgreSQL', href: 'https://www.postgresql.org/', component: 'PostgreSQL' },
+    { name: 'Prisma', href: 'https://www.prisma.io/', component: 'Prisma' },
+  ],
+
+  // {skills:N} renders an inline skill chip, <b>…</b> renders highlighted text.
+  description: {
+    template:
+      'I build Ethereum tooling, games and fullstack products with {skills:0}, {skills:1} and {skills:3} on {skills:2} — and I design the <b>brand, motion and video</b> around them too. Currently running <b>Tatsuik</b>, a one-desk studio out of coastal Karnataka.',
+  },
+
   buttons: [
-    {
-      variant: 'outline',
-      text: 'Resume / CV',
-      href: '/resume',
-      icon: 'CV',
-    },
-    {
-      variant: 'default',
-      text: 'Get in touch',
-      href: '/contact',
-      icon: 'Chat',
-    },
+    { variant: 'default', text: 'See my work', href: '/projects', icon: 'Code' },
+    { variant: 'outline', text: 'Resume', href: '/resume', icon: 'CV' },
   ],
 };
 

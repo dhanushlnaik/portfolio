@@ -43,15 +43,17 @@ export function ProjectContent({ frontmatter, content }: ProjectContentProps) {
     <article className="mx-auto max-w-4xl">
       {/* Hero Section */}
       <header className="mb-8 space-y-6">
-        <div className="relative aspect-video overflow-hidden rounded-lg">
-          <Image
-            src={image}
-            alt={title}
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
+        {image && (
+          <div className="relative aspect-video overflow-hidden rounded-xl border">
+            <Image
+              src={image}
+              alt={title}
+              fill
+              className="object-cover object-top"
+              priority
+            />
+          </div>
+        )}
 
         <div className="space-y-4">
           {/* Project Status and Technologies */}
