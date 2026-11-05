@@ -3,10 +3,12 @@ export interface Project {
   description: string;
   image: string;
   video?: string;
-  link: string;
+  /** Omit when there is no public URL — a placeholder renders a dead link. */
+  link?: string;
   technologies: { name: string; icon: React.ReactNode }[];
   github?: string;
-  live: string;
+  /** Omit when the project isn't publicly deployed. */
+  live?: string;
   details: boolean;
   projectDetailsPageSlug: string;
   isWorking: boolean;

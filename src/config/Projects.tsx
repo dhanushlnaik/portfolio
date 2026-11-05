@@ -20,7 +20,6 @@ export const projects: Project[] = [
     description:
       'Platform to find loving homes for stray animals — report sightings, coordinate rescues, and connect feeders with local volunteers.',
     image: '/project/straymate.png',
-    link: '#',
     technologies: [
       { name: 'Next.js', icon: <NextJs key="nextjs" /> },
       { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
@@ -29,8 +28,6 @@ export const projects: Project[] = [
       { name: 'PostgreSQL', icon: <PostgreSQL key="postgresql" /> },
       { name: 'Tailwind CSS', icon: <TailwindCss key="tailwindcss" /> },
     ],
-    github: '#',
-    live: '#',
     details: true,
     projectDetailsPageSlug: '/projects/straymate',
     isWorking: true,
@@ -40,15 +37,12 @@ export const projects: Project[] = [
     description:
       'Interactive Ethereum dashboard for exploring EIPs and ERCs — sprint tracking, editor leaderboards and automated GitHub pipelines.',
     image: '/project/eips-insights.png',
-    link: '#',
     technologies: [
       { name: 'Next.js', icon: <NextJs key="nextjs" /> },
       { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
       { name: 'MongoDB', icon: <MongoDB key="mongodb" /> },
       { name: 'Ethereum', icon: <ReactIcon key="react" /> },
     ],
-    github: '#',
-    live: '#',
     details: true,
     projectDetailsPageSlug: '/projects/eipsinsight',
     isWorking: true,
@@ -58,14 +52,12 @@ export const projects: Project[] = [
     description:
       'Official website for the CSI chapter at NMAM Institute of Technology, built as lead developer over three weeks.',
     image: '/project/csi-nmamit.png',
-    link: '#',
     technologies: [
       { name: 'Next.js', icon: <NextJs key="nextjs" /> },
       { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
       { name: 'Tailwind CSS', icon: <TailwindCss key="tailwindcss" /> },
     ],
     github: 'https://github.com/dhanushlnaik/csi-nmamit',
-    live: '#',
     details: true,
     projectDetailsPageSlug: '/projects/csinmamit',
     isWorking: false,
@@ -75,14 +67,11 @@ export const projects: Project[] = [
     description:
       'Regional delivery platform routing parcels over existing bus and train networks. Built under hackathon time pressure.',
     image: '/project/deliverzip.png',
-    link: '#',
     technologies: [
       { name: 'Next.js', icon: <NextJs key="nextjs" /> },
       { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
       { name: 'Node.js', icon: <NodeJs key="nodejs" /> },
     ],
-    github: '#',
-    live: '#',
     details: true,
     projectDetailsPageSlug: '/projects/deliverzip',
     isWorking: false,
@@ -92,14 +81,11 @@ export const projects: Project[] = [
     description:
       'A verified Discord gaming bot with community features, maintained for a 45,000-member server.',
     image: '/project/notamy.png',
-    link: '#',
     technologies: [
       { name: 'Node.js', icon: <NodeJs key="nodejs" /> },
       { name: 'Discord.js', icon: <ReactIcon key="react" /> },
       { name: 'MongoDB', icon: <MongoDB key="mongodb" /> },
     ],
-    github: '#',
-    live: '#',
     details: true,
     projectDetailsPageSlug: '/projects/amysensei',
     isWorking: true,
@@ -108,15 +94,12 @@ export const projects: Project[] = [
     title: 'EasyFarm',
     description: 'Farm management system for tracking crops, inputs and yields.',
     image: '/project/easyfarm.png',
-    link: '#',
     technologies: [
       { name: 'Next.js', icon: <NextJs key="nextjs" /> },
       { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
       { name: 'Prisma', icon: <Prisma key="prisma" /> },
       { name: 'PostgreSQL', icon: <PostgreSQL key="postgresql" /> },
     ],
-    github: '#',
-    live: '#',
     details: true,
     projectDetailsPageSlug: '/projects/easyfarm',
     isWorking: false,
