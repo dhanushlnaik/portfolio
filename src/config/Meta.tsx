@@ -15,7 +15,7 @@ export const siteConfig = {
   title: 'Dhanush Naik | Fullstack & Web3 Developer',
   description: 'Fullstack & Web3 developer and designer. I build Ethereum tooling and games like ETHQuest and ClockThatDaily, and run Tatsuik.',
   url: process.env.NEXT_PUBLIC_URL || 'https://dhanush.tatsuik.com',
-  ogImage: '/meta/opengraph-image.png',
+  ogImage: '/og',
   author: {
     name: about.name,
     twitter: '@iamdhanushlnaik',
@@ -39,6 +39,17 @@ export const siteConfig = {
   ],
 };
 
+
+/** Generated link-preview image (see src/app/og/route.tsx). */
+function og(title: string, subtitle: string, path: string) {
+  const q = new URLSearchParams({
+    title,
+    subtitle,
+    kicker: `dhanush.tatsuik.com${path}`,
+  });
+  return `/og?${q.toString()}`;
+}
+
 export const pageMetadata: Record<string, PageMeta> = {
   // Home page
   '/': {
@@ -51,7 +62,7 @@ export const pageMetadata: Record<string, PageMeta> = {
       'web development',
       'projects',
     ],
-    ogImage: '/meta/hero.png',
+    ogImage: '/og',
     twitterCard: 'summary_large_image',
   },
 
@@ -61,8 +72,8 @@ export const pageMetadata: Record<string, PageMeta> = {
     description:
       'Freelance, Web3, design or video work. Send me a message or book a call.',
     keywords: ['contact', 'hire', 'collaboration', 'freelance', 'developer'],
-    ogImage: '/assets/logo.png',
-    twitterCard: 'summary',
+    ogImage: og('Contact', 'Freelance, Web3, design or video work. Send a message or book a call.', '/contact'),
+    twitterCard: 'summary_large_image',
   },
 
   // Work Experience page
@@ -77,7 +88,7 @@ export const pageMetadata: Record<string, PageMeta> = {
       'software developer',
       'employment history',
     ],
-    ogImage: '/meta/work.png',
+    ogImage: og('Work', 'Tatsuik, Avarch, EtherWorld, CogniMuse and a few Discord communities.', '/work-experience'),
     twitterCard: 'summary_large_image',
   },
 
@@ -93,7 +104,7 @@ export const pageMetadata: Record<string, PageMeta> = {
       'applications',
       'software',
     ],
-    ogImage: '/meta/projects.png',
+    ogImage: og('Projects', 'Games, Ethereum tools, client sites and older experiments.', '/projects'),
     twitterCard: 'summary_large_image',
   },
 
@@ -109,7 +120,7 @@ export const pageMetadata: Record<string, PageMeta> = {
       'web development',
       'technical writing',
     ],
-    ogImage: '/meta/blogs.png',
+    ogImage: og('Writing', 'Notes on things I have built and learned.', '/blog'),
     twitterCard: 'summary_large_image',
   },
 
@@ -125,8 +136,32 @@ export const pageMetadata: Record<string, PageMeta> = {
       'qualifications',
       'download',
     ],
-    ogImage: '/meta/resume.png',
-    twitterCard: 'summary',
+    ogImage: og('Resume', 'Fullstack & Web3 developer and designer.', '/resume'),
+    twitterCard: 'summary_large_image',
+  },
+
+  '/graphics-videos': {
+    title: 'Design & Video',
+    description: "Posters, photo edits and videos I've made.",
+    keywords: ['graphic design', 'posters', 'video editing', 'portfolio'],
+    ogImage: og('Design & Video', "Posters, photo edits and videos I've made.", '/graphics-videos'),
+    twitterCard: 'summary_large_image',
+  },
+
+  '/journey': {
+    title: 'Journey',
+    description: "What I've done each year, from learning Python in school to running my own studio.",
+    keywords: ['journey', 'timeline', 'career'],
+    ogImage: og('Journey', "What I've done each year, from school to running my own studio.", '/journey'),
+    twitterCard: 'summary_large_image',
+  },
+
+  '/journey/certificates': {
+    title: 'Certificates',
+    description: 'Certificates from courses, events and hackathons.',
+    keywords: ['certificates', 'achievements', 'hackathons'],
+    ogImage: og('Certificates', 'Certificates from courses, events and hackathons.', '/journey/certificates'),
+    twitterCard: 'summary_large_image',
   },
 
   // Gears page
@@ -142,7 +177,7 @@ export const pageMetadata: Record<string, PageMeta> = {
       'productivity',
       'development environment',
     ],
-    ogImage: '/meta/gears.png',
+    ogImage: og('Uses', 'The hardware, apps and browser extensions I use every day.', '/gears'),
     twitterCard: 'summary_large_image',
   },
 

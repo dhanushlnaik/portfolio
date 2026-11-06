@@ -1,7 +1,6 @@
 export const certificates = [
-  // Drop the PNG into public/certificates/ and reference it here.
-  // The directory does not exist yet, so entries below will render a broken
-  // image until the matching file is added.
+  // Put the image in public/certificates/ and reference it here. Entries
+  // without an image file are still listed on the page, as text.
   {
     file: '/certificates/ssoc-certificate.png',
     title: 'SSoC Participation Certificate',
