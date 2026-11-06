@@ -11,7 +11,7 @@ export const about = {
 export const now = {
   updated: 'Nov 2026',
   items: [
-    'Running the ETHQuest booth game at Devcon 8 in Mumbai',
+    'At Devcon 8 in Mumbai, running ETHQuest at the EIPsInsight booth',
     'Adding new tracks to ClockThatDaily',
     'Taking Web3 + design projects through Tatsuik',
     'Reading Ethereum core dev call transcripts',

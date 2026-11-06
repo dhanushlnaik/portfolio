@@ -34,9 +34,21 @@ export const heroConfig = {
   timezone: 'Asia/Kolkata',
 
   // Small "currently" pill above the name. Keep it short and current.
+  // `until` (optional) is when this status expires; after that the pill
+  // switches to `next` on its own, so a dated status never goes stale.
   status: {
-    text: 'Shipping ETHQuest for Devcon 8, Mumbai',
+    text: "I'm at Devcon 8 in Mumbai right now. Come say hi at the EIPsInsight booth",
     href: '/projects/ethquest',
+    until: '2026-11-06T23:59:59+05:30',
+    next: {
+      text: 'Building ETHQuest, BlobLens and ClockThatDaily',
+      href: '/projects',
+    },
+  } as {
+    text: string;
+    href: string;
+    until?: string;
+    next?: { text: string; href: string };
   },
 
   skills: [

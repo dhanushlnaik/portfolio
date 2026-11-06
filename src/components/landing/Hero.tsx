@@ -1,6 +1,5 @@
 import { heroConfig, skillComponents, socialLinks } from '@/config/Hero';
 import { parseTemplate } from '@/lib/hero';
-import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'next-view-transitions';
 import Image from 'next/image';
 import React from 'react';
@@ -9,6 +8,7 @@ import Container from '../common/Container';
 import LocalTime from '../common/LocalTime';
 import { PixelBuddySprite } from '../common/PixelBuddy';
 import Skill from '../common/Skill';
+import StatusPill from './StatusPill';
 import CV from '../svgs/CV';
 import Code from '../svgs/Code';
 import { Button } from '../ui/button';
@@ -16,8 +16,7 @@ import { Button } from '../ui/button';
 const buttonIcons = { CV, Code };
 
 export default function Hero() {
-  const { name, title, avatar, skills, description, buttons, status } =
-    heroConfig;
+  const { name, title, avatar, skills, description, buttons } = heroConfig;
 
   const renderDescription = () =>
     parseTemplate(description.template, skills).map((part) => {
@@ -63,17 +62,7 @@ export default function Hero() {
         <LocalTime />
       </div>
 
-      <Link
-        href={status.href}
-        className="group mt-8 inline-flex max-w-full items-center gap-2 rounded-full border bg-background px-3 py-1 text-xs text-muted-foreground transition-colors hover:border-brand/50 hover:text-foreground"
-      >
-        <span className="relative flex size-2 shrink-0">
-          <span className="absolute inline-flex size-full animate-ping rounded-full bg-brand opacity-60" />
-          <span className="relative inline-flex size-2 rounded-full bg-brand" />
-        </span>
-        <span className="truncate">{status.text}</span>
-        <ArrowUpRight className="size-3 shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-      </Link>
+      <StatusPill />
 
       <h1 className="mt-4 text-4xl font-bold tracking-tight text-balance md:text-5xl">
         {name}
