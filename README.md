@@ -2,7 +2,7 @@
 
 My personal site. I'm Dhanush Naik, a fullstack and Web3 developer who also does design and video. I run [Tatsuik](https://www.tatsuik.com/), a small studio in Bhatkal, Karnataka.
 
-**Live:** [dhanushlnaik.vercel.app](https://dhanushlnaik.vercel.app)
+**Live:** [dhanush.tatsuik.com](https://dhanush.tatsuik.com/)
 
 ![Home page in dark mode](.github/assets/home.jpg)
 
@@ -39,7 +39,7 @@ To run the chat and contact form locally, add these to `.env.local`:
 | `GEMINI_API_KEY` | Chat assistant (`/api/chat`) |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | Contact form messages (`/api/contact`) |
 | `NEXT_PUBLIC_UMAMI_ID`, `NEXT_PUBLIC_UMAMI_SRC` | Analytics (optional) |
-| `NEXT_PUBLIC_URL` | Site URL used in metadata |
+| `NEXT_PUBLIC_URL` | Site URL for metadata and the sitemap (defaults to `https://dhanush.tatsuik.com`) |
 
 ## Editing content
 

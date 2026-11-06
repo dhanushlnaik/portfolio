@@ -14,7 +14,7 @@ export const siteConfig = {
   name: heroConfig.name,
   title: 'Dhanush Naik | Fullstack & Web3 Developer',
   description: 'Fullstack & Web3 developer and designer. I build Ethereum tooling and games like ETHQuest and ClockThatDaily, and run Tatsuik.',
-  url: process.env.NEXT_PUBLIC_URL || 'http://localhost:3000',
+  url: process.env.NEXT_PUBLIC_URL || 'https://dhanush.tatsuik.com',
   ogImage: '/meta/opengraph-image.png',
   author: {
     name: about.name,
