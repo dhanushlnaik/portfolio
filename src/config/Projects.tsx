@@ -44,7 +44,7 @@ export const projects: Project[] = [
     stack: ['Next.js 16', 'Ghost', 'TypeScript', 'Tailwind CSS'],
     live: 'https://etherworldclient.vercel.app/',
     status: 'live',
-    details: false,
+    details: true,
     projectDetailsPageSlug: '/projects/etherworld',
   },
   {
