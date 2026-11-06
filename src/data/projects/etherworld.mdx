@@ -1,0 +1,46 @@
+---
+title: 'EtherWorld'
+description: 'A new Next.js front-end for EtherWorld, an Ethereum news site running since 2017, with Ghost kept as the newsroom.'
+image: '/project/etherworld.jpg'
+technologies: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS v4', 'Ghost Content API', 'Ghost Admin API', 'Nginx', 'systemd']
+live: 'https://etherworldclient.vercel.app/'
+timeline: 'Sep 2026'
+role: 'Design & Fullstack'
+team: 'Avarch'
+status: 'completed'
+featured: false
+challenges: ['Keeping 2,000 old URLs working', 'Members-only posts behind a cache', 'Image resizing on a small server']
+learnings: ['Headless Ghost', 'Incremental static regeneration with webhooks', 'Splitting one domain between two apps with Nginx']
+isPublished: true
+---
+
+## Overview
+
+**EtherWorld** has been publishing Ethereum news on Ghost since 2017. The goal was a new site for readers without changing anything about how the editors work.
+
+So Ghost stays as the newsroom, and the site people visit is a new **Next.js 16** app that reads from it. The ~2,000 post archive, authors, tags and URLs all stay the same.
+
+## What changed for readers
+
+- A new design: dark crimson theme, Source Serif 4 for headlines, light and dark modes.
+- A trending ticker, a top stories carousel, and pages for every Ethereum upgrade (Frontier through Glamsterdam).
+- On article pages: a sticky share bar, a live "In this article" list, a rotating sponsor card and a Most popular list. On phones the sidebar moves under the article.
+- **EIP linking**: when an article mentions an EIP or ERC, it links to EIPsInsight and a "Standards in this story" box lists them with live status from the `ethereum/EIPs` and `ethereum/ERCs` repos.
+
+## What didn't change for editors
+
+Nothing. They still write in Ghost. When they publish or edit, a Ghost webhook tells the Next.js site to refresh that page. Without the webhook, pages refresh every 5 minutes anyway.
+
+## The tricky parts
+
+**Old links.** Ghost uses lower-case slugs with trailing slashes, and older posts used date URLs like `/2025/06/26/my-post/`. The new site lower-cases URLs, keeps trailing slashes and redirects the date URLs, so links from years of tweets and newsletters still work.
+
+**Members and comments.** Ghost and Next.js share one domain. Nginx sends Ghost's own paths (`/ghost/`, `/members/`, `/content/`) to Ghost and everything else to Next.js. That way Ghost's sign-in popup and comments widget work without any changes.
+
+**Members-only posts.** Pages are cached, so the cached HTML only ever has the free preview. When a signed-in member opens a gated post, their browser asks an API route for the rest. That route checks the Ghost session cookie and fetches the full post through the Admin API. Paid content never ends up in the cache.
+
+**Images.** Next.js's image optimiser would time out on our small server when a page asked for a dozen new images at once. Ghost already generates resized WebP images, so I pointed `next/image` at those instead.
+
+## Deployment
+
+It runs as a systemd service behind Nginx on the same server as Ghost. There's a runbook in the repo for switching traffic over and rolling back.

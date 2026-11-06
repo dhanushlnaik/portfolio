@@ -86,7 +86,7 @@ export const experiences: Experience[] = [
       { name: 'TypeScript', href: 'https://typescriptlang.org/', icon: <TypeScript /> },
       { name: 'Vercel', href: 'https://vercel.com/', icon: <Vercel /> },
     ],
-    website: 'https://eipsinsights.vercel.app',
+    website: 'https://eipsinsight.com',
     linkedin: 'https://www.linkedin.com/company/avarch-llc/',
   },
   {

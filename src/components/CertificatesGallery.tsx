@@ -1,41 +1,100 @@
 'use client';
 
-import React, { useState } from 'react';
 import Image from 'next/image';
-import { Dialog, DialogContent, DialogTrigger, DialogTitle } from './ui/dialog';
-import { certificates } from '@/config/Achievements';
+import React, { useState } from 'react';
 
-export default function CertificatesGallery() {
-  const [active, setActive] = useState<string | null>(null);
+import { Dialog, DialogContent, DialogTitle } from './ui/dialog';
+
+export interface CertificateItem {
+  file: string;
+  title?: string;
+  issuer?: string;
+  date?: string;
+  hasImage: boolean;
+}
+
+function formatDate(date?: string) {
+  if (!date) return null;
+  const d = new Date(date);
+  return Number.isNaN(d.getTime())
+    ? date
+    : d.toLocaleDateString('en-IN', { month: 'short', year: 'numeric' });
+}
+
+export default function CertificatesGallery({
+  certificates,
+}: {
+  certificates: CertificateItem[];
+}) {
+  const [active, setActive] = useState<CertificateItem | null>(null);
+  const withImage = certificates.filter((c) => c.hasImage);
+  const textOnly = certificates.filter((c) => !c.hasImage);
+
+  if (certificates.length === 0) {
+    return <p className="text-secondary text-sm">Nothing here yet.</p>;
+  }
 
   return (
-    <div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {certificates.map((cert) => (
-          <div key={cert.file} className="cursor-pointer" onClick={() => setActive(cert.file)}>
-            <div className="relative w-full h-56 bg-muted/20 rounded overflow-hidden">
-              <Image src={cert.file} alt={cert.title || 'certificate'} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain" />
-            </div>
-            <div className="mt-3">
-              <h4 className="text-sm font-semibold">{cert.title}</h4>
-              <p className="text-xs text-muted-foreground">{cert.issuer} • {cert.date}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Fullscreen viewer */}
-      <Dialog open={!!active} onOpenChange={(open) => { if (!open) setActive(null); }}>
-        <DialogContent className="!max-w-[90vw] !max-h-[90vh] p-0 bg-transparent shadow-none rounded-none">
-          {/* Accessible title required by Radix Dialog (hidden visually) */}
-          <DialogTitle className="sr-only">Certificate viewer</DialogTitle>
-          <div className="w-full h-[80vh] flex items-center justify-center">
-            {active && (
-              <div className="relative w-full h-full">
-                <Image src={active} alt="certificate" fill sizes="100vw" className="object-contain" />
+    <div className="space-y-10">
+      {withImage.length > 0 && (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {withImage.map((cert) => (
+            <button
+              key={cert.file}
+              type="button"
+              onClick={() => setActive(cert)}
+              className="group rounded-xl border p-3 text-left transition-colors hover:border-brand/40"
+            >
+              <div className="relative h-52 w-full overflow-hidden rounded-lg bg-muted/40">
+                <Image
+                  src={cert.file}
+                  alt={cert.title || 'Certificate'}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 360px"
+                  className="object-contain"
+                />
               </div>
-            )}
-          </div>
+              <p className="mt-3 font-medium">{cert.title}</p>
+              <p className="font-mono text-xs text-muted-foreground">
+                {[cert.issuer, formatDate(cert.date)].filter(Boolean).join(' · ')}
+              </p>
+            </button>
+          ))}
+        </div>
+      )}
+
+      {textOnly.length > 0 && (
+        <ul className="divide-y divide-dashed rounded-xl border px-4">
+          {textOnly.map((cert) => (
+            <li
+              key={cert.file}
+              className="flex flex-col gap-1 py-3 sm:flex-row sm:items-baseline sm:justify-between"
+            >
+              <span className="font-medium">{cert.title}</span>
+              <span className="font-mono text-xs text-muted-foreground">
+                {[cert.issuer, formatDate(cert.date)].filter(Boolean).join(' · ')}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <Dialog open={!!active} onOpenChange={(open) => !open && setActive(null)}>
+        <DialogContent className="!max-h-[90vh] !max-w-[90vw] rounded-none bg-transparent p-0 shadow-none">
+          <DialogTitle className="sr-only">
+            {active?.title ?? 'Certificate'}
+          </DialogTitle>
+          {active && (
+            <div className="relative h-[80vh] w-full">
+              <Image
+                src={active.file}
+                alt={active.title || 'Certificate'}
+                fill
+                sizes="90vw"
+                className="object-contain"
+              />
+            </div>
+          )}
         </DialogContent>
       </Dialog>
     </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { buddyConfig } from '@/config/Buddy';
+import { BIT_PALETTE, type BitPose, bitGrid } from '@/lib/bit';
 import React, { useEffect, useRef, useState } from 'react';
 
 /*
@@ -10,61 +11,9 @@ import React, { useEffect, useRef, useState } from 'react';
  * dozes off when you stop moving; on touch devices it stays put.
  */
 
-const PALETTE: Record<string, string> = {
-  K: '#18181b', // hair / outline
-  H: '#3f3f46', // hair highlight
-  S: '#f5d0b5', // skin
-  B: '#f19c9c', // blush
-  G: '#27272a', // glasses frame
-  P: '#f6b5cf', // hoodie
-  D: '#d987ad', // hoodie shade / strings
-  W: '#fafafa', // collar
-  Z: '#52525b', // shoes
-};
-
-const HEAD = [
-  '.....KKKKKK.....',
-  '...KKHKKKKHKK...',
-  '..KKKKKKHKKKKK..',
-  '.KKHKKKKKKKKHKK.',
-  '.KKKKKKKKKKKKKK.',
-  '.KKKSKKSKKSKKKK.',
-  '.KKSSSSSSSSSSKK.',
-  '.KGGGGSSSSGGGGK.',
-  '.SGSSGGGGGGSSGS.',
-];
-
-const EYES_OPEN = '.SGKSGSSSSGKSGS.';
-const EYES_SHUT = '.SGSSGSSSSGSSGS.';
-const EYES_BLINK = '.SGGGGSSSSGGGGS.';
-
-const FACE = [
-  '.SGGGGSSSSGGGGS.',
-  '..SBSSSSSSSSBS..',
-  '...SSSSKKSSSS...',
-  '....SSSSSSSS....',
-  '...PPPPWWPPPP...',
-  '..PPPPDPPDPPPP..',
-  '..PPPPDPPDPPPP..',
-  '..SPPPPPPPPPPS..',
-  '...PPPPPPPPPP...',
-];
-
-const FEET = {
-  stand: '...ZZZ....ZZZ...',
-  stepA: '..ZZZ......ZZZ..',
-  stepB: '....ZZZ..ZZZ....',
-};
-
-type Pose = 'stand' | 'stepA' | 'stepB' | 'sleep' | 'blink';
-
-function grid(pose: Pose): string[] {
-  const eyes =
-    pose === 'sleep' ? EYES_SHUT : pose === 'blink' ? EYES_BLINK : EYES_OPEN;
-  const feet =
-    pose === 'stepA' ? FEET.stepA : pose === 'stepB' ? FEET.stepB : FEET.stand;
-  return [...HEAD, eyes, ...FACE, feet];
-}
+type Pose = BitPose;
+const PALETTE = BIT_PALETTE;
+const grid = bitGrid;
 
 export function PixelBuddySprite({
   pose = 'stand',

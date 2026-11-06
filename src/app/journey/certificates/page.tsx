@@ -1,70 +1,64 @@
-import fs from 'fs';
-import path from 'path';
+import CertificatesGallery, {
+  type CertificateItem,
+} from '@/components/CertificatesGallery';
 import Container from '@/components/common/Container';
-import SectionHeading from '@/components/common/SectionHeading';
-import { Separator } from '@/components/ui/separator';
-import { generateMetadata as getMetadata } from '@/config/Meta';
-import { Metadata } from 'next';
-import React from 'react';
-import Image from 'next/image';
 import { certificates as configuredCertificates } from '@/config/Achievements';
-import { Card } from '@/components/ui/card';
-import CertificatesGallery from '@/components/CertificatesGallery';
+import { generateMetadata as getMetadata } from '@/config/Meta';
+import fs from 'fs';
+import { Metadata } from 'next';
+import path from 'path';
+import React from 'react';
 
-export const metadata: Metadata = {
-  ...getMetadata('/journey/certificates'),
-  robots: { index: true, follow: true },
-};
+export const metadata: Metadata = getMetadata('/journey/certificates') as Metadata;
 
-export default function CertificatesPage() {
-  // Server-side: auto-discover certificate images placed under public/certificates
-  const certDir = path.join(process.cwd(), 'public', 'certificates');
-  let discovered: { file: string; title?: string; issuer?: string; date?: string }[] = [];
-  try {
-    if (fs.existsSync(certDir)) {
-      const files = fs.readdirSync(certDir);
-      discovered = files
-        .filter((f) => /\.(png|jpe?g|webp|avif)$/i.test(f))
-        .map((f) => ({ file: `/certificates/${f}`, title: undefined, issuer: undefined, date: undefined }));
-    }
-  } catch (e) {
-    // ignore errors and render configured certificates only
-    discovered = [];
+const publicDir = path.join(process.cwd(), 'public');
+const certDir = path.join(publicDir, 'certificates');
+
+function loadCertificates(): CertificateItem[] {
+  // Entries from src/config/Achievements.tsx. An entry whose image file is
+  // missing is still listed, just without the image.
+  const items = new Map<string, CertificateItem>();
+  for (const c of configuredCertificates) {
+    items.set(c.file, {
+      ...c,
+      hasImage: fs.existsSync(path.join(publicDir, c.file)),
+    });
   }
 
-  // Merge configured certificates with discovered ones (configured entries take precedence)
-  const configured = Array.isArray(configuredCertificates) ? configuredCertificates : [];
-  // Build map to avoid duplicates by file path
-  const map = new Map<string, { file: string; title?: string; issuer?: string; date?: string }>();
-  configured.forEach((c: { file: string; title?: string; issuer?: string; date?: string }) => map.set(c.file, c));
-  discovered.forEach((d) => {
-    if (!map.has(d.file)) map.set(d.file, d);
-  });
+  // Any image dropped into public/certificates shows up automatically.
+  if (fs.existsSync(certDir)) {
+    for (const f of fs.readdirSync(certDir)) {
+      if (!/\.(png|jpe?g|webp|avif)$/i.test(f)) continue;
+      const file = `/certificates/${f}`;
+      if (!items.has(file)) {
+        items.set(file, {
+          file,
+          title: f.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' '),
+          hasImage: true,
+        });
+      }
+    }
+  }
+  return [...items.values()];
+}
 
-  const allCerts = Array.from(map.values());
+export default function CertificatesPage() {
+  const certificates = loadCertificates();
 
   return (
-    <Container className="py-8 md:py-16">
-      <div className="space-y-6 md:space-y-8">
-        <div className="space-y-3 md:space-y-4 text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-            Certificates & Achievements
-          </h1>
-          <p className="mx-auto max-w-2xl text-base md:text-lg text-muted-foreground px-4">
-            Certificates from courses, events and hackathons.
-          </p>
-        </div>
-        <Separator />
+    <Container className="py-12">
+      <header>
+        <p className="font-mono text-xs text-brand">~/journey/certificates</p>
+        <h1 className="mt-2 text-4xl font-bold tracking-tight">
+          Certificates
+        </h1>
+        <p className="text-secondary mt-3 max-w-xl leading-7">
+          Certificates from courses, events and hackathons.
+        </p>
+      </header>
 
-        <div className="space-y-8 md:space-y-12">
-          <p className="text-sm text-muted-foreground">
-            Add certificates (PNG/JPEG) to <code className="font-mono">public/certificates</code> or register
-            them in <code className="font-mono">src/config/Achievements.tsx</code>. Files placed in the
-            directory are auto-discovered and displayed here.
-          </p>
-
-          <CertificatesGallery />
-        </div>
+      <div className="mt-10">
+        <CertificatesGallery certificates={certificates} />
       </div>
     </Container>
   );

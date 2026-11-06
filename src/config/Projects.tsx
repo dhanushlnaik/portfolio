@@ -20,6 +20,34 @@ export const projects: Project[] = [
     projectDetailsPageSlug: '/projects/ethquest',
   },
   {
+    title: 'BlobLens',
+    description:
+      'Live analytics for Ethereum blobs (EIP-4844): blob fees, rollup usage, mempool and MEV. Indexes every block with a custom Rust Reth ExEx into ClickHouse. Built at Avarch.',
+    year: '2026',
+    category: 'Ethereum · Data',
+    image: '/project/bloblens.jpg',
+    stack: ['Rust', 'Reth ExEx', 'ClickHouse', 'Next.js 16', 'PostgreSQL'],
+    github: 'https://github.com/dhanushlnaik/blob_lens',
+    live: 'https://bloblens.com/',
+    status: 'live',
+    featured: true,
+    details: true,
+    projectDetailsPageSlug: '/projects/bloblens',
+  },
+  {
+    title: 'EtherWorld',
+    description:
+      'New front-end for EtherWorld, an Ethereum news site running since 2017. Ghost still handles writing and publishing; the site itself is Next.js, with EIP mentions in articles linked to EIPsInsight.',
+    year: '2026',
+    category: 'Media · Headless CMS',
+    image: '/project/etherworld.jpg',
+    stack: ['Next.js 16', 'Ghost', 'TypeScript', 'Tailwind CSS'],
+    live: 'https://etherworldclient.vercel.app/',
+    status: 'live',
+    details: true,
+    projectDetailsPageSlug: '/projects/etherworld',
+  },
+  {
     title: 'ClockThatDaily',
     description:
       'A daily 4-minute quiz on internet and pop culture with four games (Emojidle, Bad Plot, Soundbite, Cluster), streaks and a leaderboard.',
@@ -58,7 +86,6 @@ export const projects: Project[] = [
     stack: ['Astro', 'TypeScript', 'i18n', 'Cloudflare'],
     live: 'https://realhextodecimal.com/',
     status: 'live',
-    featured: true,
     details: false,
     projectDetailsPageSlug: '/projects/realhextodecimal',
   },
