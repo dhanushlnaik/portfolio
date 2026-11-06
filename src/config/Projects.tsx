@@ -35,6 +35,19 @@ export const projects: Project[] = [
     projectDetailsPageSlug: '/projects/bloblens',
   },
   {
+    title: 'EtherWorld',
+    description:
+      'New front-end for EtherWorld, an Ethereum news site running since 2017. Ghost still handles writing and publishing; the site itself is Next.js, with EIP mentions in articles linked to EIPsInsight.',
+    year: '2026',
+    category: 'Media · Headless CMS',
+    image: '/project/etherworld.jpg',
+    stack: ['Next.js 16', 'Ghost', 'TypeScript', 'Tailwind CSS'],
+    live: 'https://etherworldclient.vercel.app/',
+    status: 'live',
+    details: false,
+    projectDetailsPageSlug: '/projects/etherworld',
+  },
+  {
     title: 'ClockThatDaily',
     description:
       'A daily 4-minute quiz on internet and pop culture with four games (Emojidle, Bad Plot, Soundbite, Cluster), streaks and a leaderboard.',
