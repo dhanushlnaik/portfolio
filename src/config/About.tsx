@@ -22,5 +22,5 @@ export const stats = [
   { value: '2021', label: 'shipping since' },
   { value: '40k+', label: 'discord community' },
   { value: '392', label: 'EIPs turned into cards' },
-  { value: '13', label: 'projects on this site' },
+  { value: '14', label: 'projects on this site' },
 ];

@@ -1,0 +1,43 @@
+---
+title: 'BlobLens'
+description: 'Live analytics for Ethereum blobs (EIP-4844): fees, rollup usage, mempool and MEV, indexed from our own Reth node.'
+image: '/project/bloblens.jpg'
+technologies: ['Rust', 'Reth ExEx', 'ClickHouse', 'PostgreSQL', 'Next.js 16', 'React 19', 'Tailwind CSS v4', 'shadcn/ui', 'Docker', 'Nginx']
+github: 'https://github.com/dhanushlnaik/blob_lens'
+live: 'https://bloblens.com/'
+timeline: 'Apr-Sep 2026'
+role: 'Lead Developer'
+team: 'Avarch'
+status: 'completed'
+featured: true
+challenges: ['Indexing every block since Dencun', 'Backfilling history without an RPC bill', 'Fast queries over billions of rows']
+learnings: ['Writing a Reth ExEx', 'ClickHouse materialized views', 'Running our own archive node']
+isPublished: true
+---
+
+## Overview
+
+**BlobLens** shows what's happening in Ethereum's blob space, the cheap data layer that rollups started using after the Dencun upgrade (EIP-4844). You can see blob fees, how full each block is, which rollups are posting the most data, and what's going on in the mempool and MEV.
+
+I built it at Avarch and wrote nearly all of it.
+
+## What's on it
+
+- **Fee market**: blob base fee and utilisation over time, with labels for when the network is quiet, healthy or congested.
+- **Rollups**: who is posting blobs, how much, and how well they pack them.
+- **Mempool & MEV**: pending blob transactions and MEV activity.
+- **DA insights** and **EIP pages** for the upgrades that change blob limits (like EIP-7691).
+- **Console**: a terminal-style box where you can type commands like `/top3` to query live data.
+- Search by block number or transaction hash.
+
+## How it works
+
+- We run our own **Reth archive node**. I wrote a custom **Reth ExEx** (execution extension) in Rust that runs inside the node and writes every new block straight into **ClickHouse** as it's processed.
+- A separate Rust **backfill** binary filled in all history since Dencun, reading from the node directly instead of paying for a hosted RPC.
+- ClickHouse holds all blocks, transactions, receipts and logs, plus blob-specific tables and materialized views for ERC-20 transfers and gas stats.
+- **PostgreSQL** holds the slower-moving data: whale wallets, RWA tokens, OFAC lists and L1 cost figures.
+- The dashboard is **Next.js 16** with React 19, Tailwind v4 and shadcn/ui, served through Nginx on our own server.
+
+## Why ClickHouse
+
+Asking "average blob fee per hour for the last 90 days" over every block since Dencun is slow in Postgres. ClickHouse answers it in milliseconds, which means the charts can query raw data directly instead of reading from a cache that's always a bit stale.
