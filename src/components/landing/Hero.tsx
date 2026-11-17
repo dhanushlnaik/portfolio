@@ -8,6 +8,7 @@ import Container from '../common/Container';
 import LocalTime from '../common/LocalTime';
 import { PixelBuddySprite } from '../common/PixelBuddy';
 import Skill from '../common/Skill';
+import Harbour from './harbour/Harbour';
 import StatusPill from './StatusPill';
 import CV from '../svgs/CV';
 import Code from '../svgs/Code';
@@ -44,7 +45,9 @@ export default function Hero() {
 
   return (
     <Container className="pt-6 md:pt-10">
-      <div className="flex items-end justify-between gap-4">
+      <Harbour />
+
+      <div className="mt-8 flex items-end justify-between gap-4">
         <div className="relative">
           <Image
             src={avatar}
