@@ -9,6 +9,8 @@ export interface Project {
   category: string;
   /** Screenshot in /public/project. Omit and the card draws a typographic cover. */
   image?: string;
+  /** Animated preview shown on the card instead of the screenshot. */
+  preview?: 'ethquest' | 'bloblens' | 'clockthatdaily' | 'soltrac';
   video?: string;
   /** Tech shown as text tags on the card. */
   stack: string[];

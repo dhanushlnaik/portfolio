@@ -1,3 +1,4 @@
+import { projects } from '@/config/Projects';
 import { cn } from '@/lib/utils';
 import { type Project } from '@/types/project';
 import { ArrowUpRight } from 'lucide-react';
@@ -6,6 +7,7 @@ import Image from 'next/image';
 import React from 'react';
 
 import Github from '../svgs/Github';
+import LivePreview from './previews/LivePreview';
 
 const statusStyle: Record<Project['status'], { label: string; dot: string }> = {
   live: { label: 'Live', dot: 'bg-emerald-500' },
@@ -25,6 +27,8 @@ function hostOf(url?: string) {
 /** Fake browser chrome around the screenshot, or a typographic cover. */
 function Preview({ project }: { project: Project }) {
   const host = hostOf(project.live) ?? 'localhost';
+  // Stencilled "container" ID, stable across pages: position in the full list.
+  const manifest = `TATS-${String(projects.findIndex((p) => p.title === project.title) + 1).padStart(2, '0')}`;
   return (
     <div className="overflow-hidden rounded-lg border bg-muted/40">
       <div className="flex items-center gap-1.5 border-b px-3 py-2">
@@ -34,9 +38,14 @@ function Preview({ project }: { project: Project }) {
         <span className="ml-2 truncate font-mono text-[10px] text-muted-foreground">
           {host}
         </span>
+        <span className="ml-auto shrink-0 rounded-sm border border-dashed px-1 font-mono text-[9px] font-bold tracking-widest text-muted-foreground">
+          {manifest}
+        </span>
       </div>
       <div className="relative aspect-[16/10] overflow-hidden">
-        {project.image ? (
+        {project.preview ? (
+          <LivePreview kind={project.preview} />
+        ) : project.image ? (
           <Image
             src={project.image}
             alt={`${project.title} screenshot`}
