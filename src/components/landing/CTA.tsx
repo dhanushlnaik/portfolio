@@ -75,6 +75,7 @@ export default function CTA({
             <button
               type="button"
               onClick={handleButtonClick}
+              data-cursor="book a call"
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-brand-foreground transition-opacity hover:opacity-90"
             >
               <Image
@@ -88,6 +89,7 @@ export default function CTA({
             </button>
             <a
               href={`mailto:${ctaConfig.email}`}
+              data-cursor="say hi"
               className="inline-flex items-center justify-center gap-2 rounded-lg border bg-background px-4 py-2.5 font-mono text-sm transition-colors hover:border-brand/50"
             >
               {ctaConfig.email}

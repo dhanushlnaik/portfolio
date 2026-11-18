@@ -67,7 +67,9 @@ export function ProjectCard({ project }: { project: Project }) {
   const external = !project.details;
 
   return (
-    <article className="group flex h-full flex-col gap-4 rounded-xl border bg-card/40 p-3 transition-colors hover:border-brand/40">
+    <article
+      data-cursor="open project"
+      className="group flex h-full flex-col gap-4 rounded-xl border bg-card/40 p-3 transition-colors hover:border-brand/40">
       <Link
         href={primaryHref}
         target={external ? '_blank' : undefined}

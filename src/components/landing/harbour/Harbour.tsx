@@ -211,7 +211,10 @@ export default function Harbour() {
   const nowSec = Date.now() / 1000;
 
   return (
-    <figure className="overflow-hidden rounded-xl border bg-[#060914]">
+    <figure
+      data-cursor={tip ? `block #${tip.box.ship.number.toLocaleString()} ↗` : 'pick a ship'}
+      className="overflow-hidden rounded-xl border bg-[#060914]"
+    >
       <div ref={wrapRef} className="relative">
         <canvas
           ref={canvasRef}
