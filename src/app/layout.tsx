@@ -2,7 +2,7 @@ import UmamiAnalytics from '@/components/analytics/UmamiAnalytics';
 import ChatBubble from '@/components/common/ChatBubble';
 import Footer from '@/components/common/Footer';
 import Navbar from '@/components/common/Navbar';
-import PixelBuddy from '@/components/common/PixelBuddy';
+import YouAreHere from '@/components/common/YouAreHere';
 import { ThemeProvider } from '@/components/common/ThemeProviders';
 import { generateMetadata as getMetadata } from '@/config/Meta';
 import ReactLenis from 'lenis/react';
@@ -41,7 +41,7 @@ export default function RootLayout({
               />
               <Navbar />
               {children}
-              <PixelBuddy />
+              <YouAreHere />
               <Footer />
               <ChatBubble />
               <UmamiAnalytics />

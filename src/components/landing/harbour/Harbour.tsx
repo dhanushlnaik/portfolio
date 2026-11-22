@@ -11,6 +11,38 @@ import {
   drawScene,
   layoutShips,
 } from './draw';
+import {
+  BLOB_KB,
+  type Game,
+  type GameInput,
+  ROUND_SECONDS,
+  drawGame,
+  newGame,
+  stepGame,
+} from './game';
+
+const BEST_KEY = 'harbour-blob-catch-best';
+
+function readBest() {
+  try {
+    return Number(localStorage.getItem(BEST_KEY)) || 0;
+  } catch {
+    return 0;
+  }
+}
+
+function saveBest(n: number) {
+  try {
+    localStorage.setItem(BEST_KEY, String(n));
+  } catch {
+    /* private mode etc. */
+  }
+}
+
+function formatData(blobs: number) {
+  const kb = blobs * BLOB_KB;
+  return kb >= 1024 ? `${(kb / 1024).toFixed(1)} MB` : `${kb} KB`;
+}
 
 const POLL_MS = 12_000;
 const FPS = 30;
@@ -46,6 +78,18 @@ export default function Harbour() {
   const [bubble, setBubble] = useState<string | null>(null);
   const [calm, setCalm] = useState(false);
   const [touch, setTouch] = useState(false);
+
+  // Blob Catch mini-game.
+  const gameRef = useRef<Game | null>(null);
+  const inputRef = useRef<GameInput>({ dir: 0, targetX: null });
+  const keysRef = useRef({ left: false, right: false });
+  const lastFrameRef = useRef<number | null>(null);
+  const [playing, setPlaying] = useState(false);
+  const [score, setScore] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(ROUND_SECONDS);
+  const [result, setResult] = useState<{ score: number; best: number; newBest: boolean } | null>(null);
+  const [best, setBest] = useState(0);
+  useEffect(() => setBest(readBest()), []);
 
   // Logical width follows the container so ships stay readable on phones.
   useEffect(() => {
@@ -133,12 +177,32 @@ export default function Harbour() {
     const boxes = layoutShips([...shipsRef.current.values()], W, Date.now() / 1000);
     boxesRef.current = boxes;
     const sleepy = Date.now() - lastActivity.current > 45_000 && boxes.length === 0;
-    drawScene(ctx, W, t, boxes, hoverRef.current, sleepy);
+    const g = gameRef.current;
+    drawScene(ctx, W, t, boxes, g?.active ? null : hoverRef.current, sleepy, !g?.active);
+
+    if (g?.active) {
+      const now = performance.now() / 1000;
+      const dt = Math.min(0.1, now - (lastFrameRef.current ?? now));
+      lastFrameRef.current = now;
+      const k = keysRef.current;
+      inputRef.current.dir = k.left === k.right ? 0 : k.left ? -1 : 1;
+      if (stepGame(g, dt, now, W, boxes, inputRef.current) > 0) setScore(g.score);
+      drawGame(ctx, g, now, t);
+      if (now >= g.endsAt) {
+        g.active = false;
+        const prev = readBest();
+        const newBest = g.score > prev;
+        if (newBest) saveBest(g.score);
+        setBest(Math.max(prev, g.score));
+        setResult({ score: g.score, best: Math.max(prev, g.score), newBest });
+        setPlaying(false);
+      }
+    }
   }, []);
 
   // Animation loop, paused when off-screen or when the tab is hidden.
   useEffect(() => {
-    if (calm) {
+    if (calm && !playing) {
       render(0);
       return;
     }
@@ -159,12 +223,64 @@ export default function Harbour() {
       cancelAnimationFrame(raf);
       io.disconnect();
     };
-  }, [calm, render]);
+  }, [calm, playing, render]);
 
   // Redraw the still frame when data changes in reduced-motion mode.
   useEffect(() => {
     if (calm) render(0);
   }, [calm, snapshot, width, render]);
+
+  const startGame = () => {
+    gameRef.current = newGame(widthRef.current, performance.now() / 1000);
+    lastFrameRef.current = null;
+    inputRef.current = { dir: 0, targetX: null };
+    hoverRef.current = null;
+    setTip(null);
+    setBubble(null);
+    setResult(null);
+    setScore(0);
+    setTimeLeft(ROUND_SECONDS);
+    setPlaying(true);
+    canvasRef.current?.focus({ preventScroll: true });
+  };
+
+  const stopGame = () => {
+    if (gameRef.current) gameRef.current.active = false;
+    gameRef.current = null;
+    setPlaying(false);
+  };
+
+  // Countdown and keyboard while a round is on.
+  useEffect(() => {
+    if (!playing) return;
+    const tick = setInterval(() => {
+      const g = gameRef.current;
+      if (g) setTimeLeft(Math.max(0, Math.ceil(g.endsAt - performance.now() / 1000)));
+    }, 250);
+    const key = (down: boolean) => (e: KeyboardEvent) => {
+      const k = e.key.toLowerCase();
+      if (k === 'arrowleft' || k === 'a') keysRef.current.left = down;
+      else if (k === 'arrowright' || k === 'd') keysRef.current.right = down;
+      else if (k === 'escape' && down) stopGame();
+      else return;
+      e.preventDefault();
+    };
+    const onDown = key(true);
+    const onUp = key(false);
+    window.addEventListener('keydown', onDown);
+    window.addEventListener('keyup', onUp);
+    return () => {
+      clearInterval(tick);
+      window.removeEventListener('keydown', onDown);
+      window.removeEventListener('keyup', onUp);
+      keysRef.current = { left: false, right: false };
+    };
+  }, [playing]);
+
+  const toSceneX = (clientX: number) => {
+    const rect = canvasRef.current!.getBoundingClientRect();
+    return ((clientX - rect.left) / rect.width) * widthRef.current;
+  };
 
   const hitTest = (clientX: number, clientY: number) => {
     const canvas = canvasRef.current;
@@ -184,6 +300,10 @@ export default function Harbour() {
   };
 
   const onMove = (e: React.PointerEvent) => {
+    if (playing) {
+      if (inputRef.current.targetX !== null) inputRef.current.targetX = toSceneX(e.clientX);
+      return;
+    }
     const hit = hitTest(e.clientX, e.clientY);
     hoverRef.current = hit?.box.ship.number ?? null;
     setTip(hit);
@@ -191,6 +311,7 @@ export default function Harbour() {
   };
 
   const onClick = (e: React.MouseEvent) => {
+    if (playing) return;
     const hit = hitTest(e.clientX, e.clientY);
     if (!hit) {
       setTip(null);
@@ -211,24 +332,51 @@ export default function Harbour() {
   const nowSec = Date.now() / 1000;
 
   return (
-    <figure className="overflow-hidden rounded-xl border bg-[#060914]">
+    <figure
+      data-cursor={
+        playing
+          ? touch
+            ? 'hold to steer'
+            : '← → to steer'
+          : tip
+            ? `block #${tip.box.ship.number.toLocaleString()} ↗`
+            : 'pick a ship'
+      }
+      className="overflow-hidden rounded-xl border bg-[#060914]"
+    >
       <div ref={wrapRef} className="relative">
         <canvas
           ref={canvasRef}
           width={width}
           height={SCENE_H}
+          tabIndex={playing ? 0 : -1}
+          onPointerDown={(e) => {
+            if (!playing) return;
+            e.currentTarget.setPointerCapture(e.pointerId);
+            inputRef.current.targetX = toSceneX(e.clientX);
+          }}
+          onPointerUp={() => {
+            inputRef.current.targetX = null;
+          }}
+          onPointerCancel={() => {
+            inputRef.current.targetX = null;
+          }}
           onPointerMove={onMove}
           onPointerLeave={() => {
             hoverRef.current = null;
             setTip(null);
           }}
           onClick={onClick}
-          className="block w-full cursor-pointer select-none"
-          style={{ imageRendering: 'pixelated', aspectRatio: `${width} / ${SCENE_H}` }}
+          className="block w-full cursor-pointer outline-none select-none"
+          style={{
+            imageRendering: 'pixelated',
+            aspectRatio: `${width} / ${SCENE_H}`,
+            touchAction: playing ? 'none' : 'auto',
+          }}
           aria-hidden="true"
         />
 
-        {bubble && (
+        {bubble && !playing && (
           <div
             className="pointer-events-none absolute rounded-md bg-white px-1.5 py-0.5 font-mono text-[10px] whitespace-nowrap text-black shadow"
             style={{
@@ -240,7 +388,7 @@ export default function Harbour() {
           </div>
         )}
 
-        {tip && (
+        {tip && !playing && (
           <div
             className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-full rounded-md border border-white/15 bg-black/85 px-2 py-1 font-mono text-[10px] leading-4 whitespace-nowrap text-white"
             style={{
@@ -263,12 +411,80 @@ export default function Harbour() {
           </div>
         )}
 
-        <p className="pointer-events-none absolute top-2 left-2 rounded bg-black/40 px-1.5 py-0.5 font-mono text-[10px] text-white/70 sm:top-3 sm:left-3">
-          bhatkal harbour · mainnet
-        </p>
-        <p className="pointer-events-none absolute top-2 right-2 hidden rounded bg-black/40 px-1.5 py-0.5 font-mono text-[10px] text-white/50 sm:top-3 sm:right-3 sm:block">
-          ships = blocks · containers = blobs
-        </p>
+        {!playing && !result && (
+          <>
+            <p className="pointer-events-none absolute top-2 left-2 rounded bg-black/40 px-1.5 py-0.5 font-mono text-[10px] text-white/70 sm:top-3 sm:left-3">
+              bhatkal harbour · mainnet
+            </p>
+            <p className="pointer-events-none absolute top-2 right-2 hidden rounded bg-black/40 px-1.5 py-0.5 font-mono text-[10px] text-white/50 sm:top-3 sm:right-3 sm:block">
+              ships = blocks · containers = blobs
+            </p>
+            <button
+              type="button"
+              onClick={startGame}
+              data-cursor="play"
+              className="absolute right-2 bottom-2 rounded-md bg-[#f2733a] px-2 py-1 font-mono text-[10px] font-bold text-black shadow transition-transform hover:-translate-y-0.5 sm:right-3 sm:bottom-3 sm:text-[11px]"
+            >
+              ▶ play blob catch
+            </button>
+          </>
+        )}
+
+        {playing && (
+          <>
+            <div className="pointer-events-none absolute top-2 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded bg-black/60 px-2 py-0.5 font-mono text-[10px] whitespace-nowrap text-white sm:top-3 sm:text-[11px]">
+              <span className="inline-block size-2 rounded-[1px] bg-[#f2733a]" />
+              <span>{score} caught</span>
+              <span className="text-white/40">·</span>
+              <span className={timeLeft <= 10 ? 'text-[#f2733a]' : ''}>
+                0:{String(timeLeft).padStart(2, '0')}
+              </span>
+            </div>
+            <p className="pointer-events-none absolute top-9 left-1/2 -translate-x-1/2 rounded bg-black/50 px-1.5 py-0.5 font-mono text-[9px] whitespace-nowrap text-white/60 sm:top-10 sm:text-[10px]">
+              {touch ? 'hold and drag to row' : '← → or A D to row · esc to quit'}
+            </p>
+            <button
+              type="button"
+              onClick={stopGame}
+              aria-label="Quit game"
+              className="absolute top-2 right-2 rounded bg-black/60 px-1.5 py-0.5 font-mono text-[10px] text-white/70 hover:text-white sm:top-3 sm:right-3"
+            >
+              ✕
+            </button>
+          </>
+        )}
+
+        {result && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/55 p-3">
+            <div className="rounded-lg border border-white/15 bg-[#0b1020] px-4 py-3 text-center font-mono text-white shadow-xl">
+              <p className="text-[10px] tracking-widest text-[#f2733a]">
+                {result.newBest ? 'NEW BEST!' : 'ROUND OVER'}
+              </p>
+              <p className="mt-1 text-sm font-bold sm:text-base">
+                {result.score} blob{result.score === 1 ? '' : 's'} caught
+              </p>
+              <p className="mt-0.5 text-[10px] text-white/60">
+                that&apos;s {formatData(result.score)} of rollup data · best {result.best}
+              </p>
+              <div className="mt-3 flex justify-center gap-2">
+                <button
+                  type="button"
+                  onClick={startGame}
+                  className="rounded bg-[#f2733a] px-2 py-1 text-[10px] font-bold text-black"
+                >
+                  play again
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setResult(null)}
+                  className="rounded border border-white/20 px-2 py-1 text-[10px] text-white/80"
+                >
+                  done
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       <figcaption className="flex flex-col gap-1 border-t border-white/10 px-3 py-2 font-mono text-[11px] text-white/60 sm:flex-row sm:items-center sm:justify-between">
@@ -286,6 +502,7 @@ export default function Harbour() {
             </>
           )}
           {fee && <span>· blob fee {fee}</span>}
+          {best > 0 && <span className="text-white/45">· best catch {best}</span>}
         </span>
         <span className="text-white/45">
           <span className="sm:hidden">ships = blocks · containers = blobs · </span>

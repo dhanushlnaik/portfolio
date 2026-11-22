@@ -215,7 +215,7 @@ function drawShip(ctx: CanvasRenderingContext2D, box: ShipBox, t: number, hovere
   }
 }
 
-function drawDock(ctx: CanvasRenderingContext2D, t: number, sleepy: boolean) {
+function drawDock(ctx: CanvasRenderingContext2D, t: number, sleepy: boolean, bitOnDock: boolean) {
   const deck = 97;
   // Lamp glow.
   ctx.globalAlpha = 0.12 + Math.sin(t * 3) * 0.02;
@@ -232,6 +232,7 @@ function drawDock(ctx: CanvasRenderingContext2D, t: number, sleepy: boolean) {
   px(ctx, 52, deck - 14, 1, 14, C.woodDark);
   px(ctx, 50, deck - 16, 5, 2, C.lamp);
 
+  if (!bitOnDock) return;
   // Bit on the dock.
   const rows = bitGrid(sleepy ? 'sleep' : Math.floor(t * 0.5) % 9 === 0 ? 'blink' : 'stand');
   const bx = 22;
@@ -261,6 +262,7 @@ export function drawScene(
   boxes: ShipBox[],
   hovered: number | null,
   sleepy: boolean,
+  bitOnDock = true,
 ) {
   ctx.imageSmoothingEnabled = false;
   ctx.drawImage(background(W), 0, 0);
@@ -274,5 +276,5 @@ export function drawScene(
 
   drawWater(ctx, W, t);
   for (const b of boxes) drawShip(ctx, b, t, hovered === b.ship.number);
-  drawDock(ctx, t, sleepy);
+  drawDock(ctx, t, sleepy, bitOnDock);
 }

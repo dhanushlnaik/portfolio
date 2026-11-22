@@ -1,4 +1,5 @@
 import Container from '@/components/common/Container';
+import { ArchiveList } from '@/components/projects/ArchiveList';
 import { ProjectList } from '@/components/projects/ProjectList';
 import { generateMetadata as getMetadata } from '@/config/Meta';
 import { projects } from '@/config/Projects';
@@ -32,7 +33,12 @@ export default function ProjectsPage() {
         <h2 className="font-mono text-xs text-muted-foreground">
           Archive · {archive.length}
         </h2>
-        <ProjectList className="mt-4" projects={archive} />
+        <p className="text-secondary mt-1 text-sm">
+          Older projects, college work and hackathon builds.
+        </p>
+        <div className="mt-4">
+          <ArchiveList projects={archive} />
+        </div>
       </section>
     </Container>
   );

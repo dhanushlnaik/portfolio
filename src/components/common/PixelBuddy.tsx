@@ -1,14 +1,10 @@
-'use client';
-
-import { buddyConfig } from '@/config/Buddy';
 import { BIT_PALETTE, type BitPose, bitGrid } from '@/lib/bit';
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 
 /*
- * "Bit": a pixel-art mini Dhanush (curly hair, round glasses, pink hoodie).
- * Hand-drawn on a 16×20 grid and rendered as crisp SVG rects, so there are no
- * image assets to load. On fine-pointer devices Bit trots after the cursor and
- * dozes off when you stop moving; on touch devices it stays put.
+ * "Bit": a pixel-art mini Dhanush (curly hair, round glasses, pink hoodie),
+ * drawn from the grid in src/lib/bit.ts as crisp SVG rects. Used next to the
+ * hero avatar and in the footer; the live version lives on the harbour dock.
  */
 
 type Pose = BitPose;
@@ -52,99 +48,5 @@ export function PixelBuddySprite({
         ),
       )}
     </svg>
-  );
-}
-
-const SPEED = 3.2; // px per frame
-const STOP_DISTANCE = 36;
-const SLEEP_AFTER_MS = 6000;
-const SCALE = 3;
-
-export default function PixelBuddy() {
-  const [enabled, setEnabled] = useState(false);
-  const [pose, setPose] = useState<Pose>('stand');
-  const [flip, setFlip] = useState(false);
-  const el = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!buddyConfig.enabled) return;
-    const fine = window.matchMedia('(pointer: fine)').matches;
-    const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    setEnabled(fine && !calm);
-  }, []);
-
-  useEffect(() => {
-    if (!enabled) return;
-
-    const pos = { x: window.innerWidth - 80, y: window.innerHeight - 140 };
-    const target = { ...pos };
-    let lastMove = performance.now();
-    let frame = 0;
-    let raf = 0;
-    let current: Pose = 'stand';
-
-    const set = (p: Pose) => {
-      if (p !== current) {
-        current = p;
-        setPose(p);
-      }
-    };
-
-    const onMove = (e: MouseEvent) => {
-      target.x = e.clientX;
-      target.y = e.clientY;
-      lastMove = performance.now();
-    };
-
-    const tick = (now: number) => {
-      frame++;
-      const dx = target.x - pos.x;
-      const dy = target.y - pos.y;
-      const dist = Math.hypot(dx, dy);
-
-      if (dist > STOP_DISTANCE) {
-        pos.x += (dx / dist) * SPEED;
-        pos.y += (dy / dist) * SPEED;
-        if (Math.abs(dx) > 2) setFlip(dx < 0);
-        set(Math.floor(frame / 8) % 2 === 0 ? 'stepA' : 'stepB');
-      } else if (now - lastMove > SLEEP_AFTER_MS) {
-        set('sleep');
-      } else {
-        // occasional blink while idle
-        set(frame % 180 < 6 ? 'blink' : 'stand');
-      }
-
-      if (el.current) {
-        const bob = current === 'stepA' ? -2 : 0;
-        el.current.style.transform = `translate3d(${pos.x - 8 * SCALE}px, ${
-          pos.y - 30 * SCALE + bob
-        }px, 0)`;
-      }
-      raf = requestAnimationFrame(tick);
-    };
-
-    window.addEventListener('mousemove', onMove, { passive: true });
-    raf = requestAnimationFrame(tick);
-    return () => {
-      window.removeEventListener('mousemove', onMove);
-      cancelAnimationFrame(raf);
-    };
-  }, [enabled]);
-
-  if (!enabled) return null;
-
-  return (
-    <div
-      ref={el}
-      className="pointer-events-none fixed top-0 left-0 z-[60] will-change-transform"
-      aria-hidden="true"
-    >
-      {pose === 'sleep' && (
-        <span className="animate-buddy-z absolute -top-3 right-0 font-mono text-xs font-bold text-brand">
-          z
-        </span>
-      )}
-      <PixelBuddySprite pose={pose} flip={flip} scale={SCALE} />
-    </div>
   );
 }

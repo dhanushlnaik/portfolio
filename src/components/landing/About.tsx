@@ -2,6 +2,7 @@ import { about, now, stats } from '@/config/About';
 import React from 'react';
 
 import Container from '../common/Container';
+import Greeting from './Greeting';
 import SectionHeading from '../common/SectionHeading';
 
 export default function About() {
@@ -11,6 +12,7 @@ export default function About() {
 
       <div className="mt-6 grid gap-8 md:grid-cols-[1fr_15rem]">
         <div className="text-secondary space-y-4 leading-7">
+          <Greeting />
           {about.paragraphs.map((p) => (
             <p key={p.slice(0, 24)}>{p}</p>
           ))}

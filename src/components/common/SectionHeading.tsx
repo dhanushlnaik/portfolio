@@ -20,7 +20,12 @@ export default function SectionHeading({
   hrefLabel = 'See all',
 }: SectionHeadingProps) {
   return (
-    <div className="flex items-end justify-between gap-4 border-b border-dashed pb-3">
+    <div
+      id={heading.toLowerCase().replace(/[^a-z0-9]+/g, '-')}
+      data-section={index}
+      data-section-label={heading.toLowerCase()}
+      className="flex scroll-mt-24 items-end justify-between gap-4 border-b border-dashed pb-3"
+    >
       <div>
         <p className="font-mono text-xs tracking-wide text-brand">
           {index} <span className="text-muted-foreground">/</span>{' '}
