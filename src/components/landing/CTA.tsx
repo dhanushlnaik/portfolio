@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 import Container from '../common/Container';
+import Socials from './Socials';
 import {
   Dialog,
   DialogContent,
@@ -62,7 +63,12 @@ export default function CTA({
   return (
     <>
       <Container className="mt-20">
-        <div className="relative overflow-hidden rounded-2xl border bg-brand-soft/50 p-6 sm:p-10">
+        <div
+          id="say-hi"
+          data-section="08"
+          data-section-label="say hi"
+          className="relative scroll-mt-24 overflow-hidden rounded-2xl border bg-brand-soft/50 p-6 sm:p-10"
+        >
           <div className="bg-dots-solid absolute inset-0 -z-10 opacity-60" />
           <p className="font-mono text-xs text-brand">08 / say hi</p>
           <h2 className="mt-2 max-w-md text-2xl font-bold tracking-tight text-balance sm:text-3xl">
@@ -87,13 +93,9 @@ export default function CTA({
               />
               {linkText}
             </button>
-            <a
-              href={`mailto:${ctaConfig.email}`}
-              data-cursor="say hi"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border bg-background px-4 py-2.5 font-mono text-sm transition-colors hover:border-brand/50"
-            >
-              {ctaConfig.email}
-            </a>
+          </div>
+          <div className="mt-6">
+            <Socials />
           </div>
         </div>
       </Container>

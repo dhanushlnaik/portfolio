@@ -71,24 +71,38 @@ export const heroConfig = {
 };
 
 // Social Links Configuration
-export const socialLinks = [
+export interface SocialLink {
+  name: string;
+  handle: string;
+  href: string;
+  icon: React.ReactNode;
+  /** Text to put on the clipboard (shows a copy button). */
+  copy?: string;
+}
+
+export const socialLinks: SocialLink[] = [
   {
     name: 'X',
+    handle: '@iamdhanushlnaik',
     href: 'https://x.com/iamdhanushlnaik',
     icon: <X />,
   },
   {
     name: 'LinkedIn',
+    handle: 'in/dhanushlnaik',
     href: 'https://www.linkedin.com/in/dhanushlnaik/',
     icon: <LinkedIn />,
   },
   {
-    name: 'Github',
+    name: 'GitHub',
+    handle: '@dhanushlnaik',
     href: 'https://github.com/dhanushlnaik',
     icon: <Github />,
   },
   {
     name: 'Email',
+    handle: 'dhanushlnaik@gmail.com',
+    copy: 'dhanushlnaik@gmail.com',
     href: 'mailto:dhanushlnaik@gmail.com',
     icon: <Mail />,
   },
